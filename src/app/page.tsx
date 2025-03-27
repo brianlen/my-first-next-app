@@ -38,32 +38,36 @@ export default function Home() {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
-      <Grid container spacing={3} alignItems="center" mb={4}>
-        <Grid size={{ xs: 12, md: 3 }}>
-          <Avatar 
-            alt="Henry Cho" 
-            sx={{ 
-              width: 200, 
-              height: 200, 
-              margin: 'auto',
-              border: '4px solid',
-              borderColor: 'primary.main'
-            }}
-            src="/api/placeholder/200/200"
-          />
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+        <Grid container spacing={3} alignItems="center" mb={4}>
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Avatar 
+              alt="Henry Cho" 
+              sx={{ 
+                width: 200, 
+                height: 200, 
+                margin: 'auto',
+                border: '4px solid',
+                borderColor: 'primary.main'
+              }}
+              src="/api/placeholder/200/200"
+            />
+          </Grid>
+          <Grid size={{ xs: 12, md: 9 }}>
+            <Typography variant="h3" component="h1" gutterBottom>
+              Henry Cho
+            </Typography>
+            <Typography variant="h5" color="text.secondary" gutterBottom>
+              Space Systems Engineer & Research Analyst
+            </Typography>
+            <Typography variant="body1">
+              Experienced space systems engineer and research analyst with a proven track record in satellite technology, software development, and strategic space operations. Skilled in project management, cross-functional team leadership, and technical intelligence analysis.
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid size={{ xs: 12, md: 9 }}>
-          <Typography variant="h3" component="h1" gutterBottom>
-            Henry Cho
-          </Typography>
-          <Typography variant="h5" color="text.secondary" gutterBottom>
-            Space Systems Engineer & Research Analyst
-          </Typography>
-          <Typography variant="body1">
-            Experienced space systems engineer and research analyst with a proven track record in satellite technology, software development, and strategic space operations. Skilled in project management, cross-functional team leadership, and technical intelligence analysis.
-          </Typography>
-        </Grid>
-      </Grid>
+        </CardContent>
+      </Card>
 
       {/* Contact Information */}
       <Card sx={{ mb: 3 }}>
