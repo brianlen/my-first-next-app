@@ -272,19 +272,6 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      {/* Volunteer Work */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h5" gutterBottom>
-            <WorkIcon sx={{ mr: 2 }} />
-            Volunteer Work
-          </Typography>
-          <Typography variant="body1">
-            Volunteer with Habitat for Humanity
-          </Typography>
-        </CardContent>
-      </Card>
-
       {/* Countries Visited */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
@@ -310,6 +297,19 @@ export default function Home() {
               />
             ))}
           </Box>
+        </CardContent>
+      </Card>
+
+      {/* Volunteer Work */}
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+          <Typography variant="h5" gutterBottom>
+            <WorkIcon sx={{ mr: 2 }} />
+            Volunteer Work
+          </Typography>
+          <Typography variant="body1">
+            Volunteer with Habitat for Humanity
+          </Typography>
         </CardContent>
       </Card>
 
