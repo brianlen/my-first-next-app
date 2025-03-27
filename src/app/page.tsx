@@ -73,25 +73,25 @@ export default function Home() {
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Grid container spacing={2}>
-            <Grid size={{ xs: 12, sm: 4 }}>
+            <Grid size={{ xs: 12, sm: 3 }}>
               <Box display="flex" alignItems="center">
                 <ContactMailIcon sx={{ mr: 2 }} />
                 <Typography>henry.cho@email.com</Typography>
               </Box>
             </Grid>
-            <Grid size={{ xs: 12, sm: 4 }}>
+            <Grid size={{ xs: 12, sm: 3 }}>
               <Box display="flex" alignItems="center">
                 <PhoneIcon sx={{ mr: 2 }} />
                 <Typography>+1 (555) 555-5555</Typography>
               </Box>
             </Grid>
-            <Grid size={{ xs: 12, sm: 4 }}>
+            <Grid size={{ xs: 12, sm: 3 }}>
               <Box display="flex" alignItems="center">
                 <PlaceIcon sx={{ mr: 2 }} />
                 <Typography>Albuquerque, New Mexico</Typography>
               </Box>
             </Grid>
-            <Grid>
+            <Grid size={{ xs: 12, sm: 3 }}>
               <Link 
                 href="https://www.linkedin.com/in/the-henry-cho" 
                 target="_blank" 
@@ -103,7 +103,7 @@ export default function Home() {
                   color: 'primary.main'
                 }}
               >
-                <LinkedInIcon sx={{ mr: 1 }} />
+                <LinkedInIcon sx={{ mr: 2 }} />
                 <Typography>linkedin.com/in/the-henry-cho</Typography>
               </Link>
             </Grid>
