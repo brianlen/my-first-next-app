@@ -72,13 +72,13 @@ export default function Home() {
             <Grid size={{ xs: 12, sm: 4 }}>
               <Box display="flex" alignItems="center">
                 <ContactMailIcon sx={{ mr: 2 }} />
-                <Typography>henry.cho.af@gmail.com</Typography>
+                <Typography>henry.cho@email.com</Typography>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, sm: 4 }}>
               <Box display="flex" alignItems="center">
                 <PhoneIcon sx={{ mr: 2 }} />
-                <Typography>+1 (626) 759-8684</Typography>
+                <Typography>+1 (555) 555-5555</Typography>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, sm: 4 }}>
