@@ -14,7 +14,6 @@ import {
   List, 
   ListItem, 
   ListItemText,
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -28,12 +27,10 @@ import SchoolIcon from '@mui/icons-material/School';
 import LanguageIcon from '@mui/icons-material/Language';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CodeIcon from '@mui/icons-material/Code';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import StarIcon from '@mui/icons-material/Star';
 import PlaceIcon from '@mui/icons-material/Place';
-import RunCircleIcon from '@mui/icons-material/RunCircle';
 import PublicIcon from '@mui/icons-material/Public';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 
@@ -42,7 +39,7 @@ export default function Home() {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       {/* Header */}
       <Grid container spacing={3} alignItems="center" mb={4}>
-        <Grid item xs={12} md={3}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <Avatar 
             alt="Henry Cho" 
             sx={{ 
@@ -55,7 +52,7 @@ export default function Home() {
             src="/api/placeholder/200/200"
           />
         </Grid>
-        <Grid item xs={12} md={9}>
+        <Grid size={{ xs: 12, md: 9 }}>
           <Typography variant="h3" component="h1" gutterBottom>
             Henry Cho
           </Typography>
@@ -72,25 +69,25 @@ export default function Home() {
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
               <Box display="flex" alignItems="center">
                 <ContactMailIcon sx={{ mr: 2 }} />
                 <Typography>henry.cho.af@gmail.com</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
               <Box display="flex" alignItems="center">
                 <PhoneIcon sx={{ mr: 2 }} />
                 <Typography>+1 (626) 759-8684</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
               <Box display="flex" alignItems="center">
                 <PlaceIcon sx={{ mr: 2 }} />
                 <Typography>Albuquerque, New Mexico</Typography>
               </Box>
             </Grid>
-            <Grid item>
+            <Grid>
               <Link 
                 href="https://www.linkedin.com/in/the-henry-cho" 
                 target="_blank" 
