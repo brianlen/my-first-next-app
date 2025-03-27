@@ -57,10 +57,10 @@ export default function Home() {
             Henry Cho
           </Typography>
           <Typography variant="h5" color="text.secondary" gutterBottom>
-            Space Systems Engineer & Intelligence Analyst
+            Space Systems Engineer & Research Analyst
           </Typography>
           <Typography variant="body1">
-            Experienced space systems engineer and intelligence analyst with a proven track record in satellite technology, software development, and strategic space operations. Skilled in project management, cross-functional team leadership, and technical intelligence analysis.
+            Experienced space systems engineer and research analyst with a proven track record in satellite technology, software development, and strategic space operations. Skilled in project management, cross-functional team leadership, and technical intelligence analysis.
           </Typography>
         </Grid>
       </Grid>
@@ -314,48 +314,48 @@ export default function Home() {
       </Card>
 
       {/* Marathons */}
-<Card>
-  <CardContent>
-    <Typography variant="h5" gutterBottom>
-      <DirectionsRunIcon sx={{ mr: 2 }} />
-      Marathon Achievements
-    </Typography>
-    <TableContainer>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Marathon</TableCell>
-            <TableCell>Finish Time</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {[
-            { name: "2019 Los Angeles Marathon", time: "5:22:44" },
-            { name: "2019 Air Force Marathon", time: "5:21:33" },
-            { name: "2020 Air Force Marathon", time: "5:23:52" },
-            { name: "2021 Air Force Marathon", time: "5:23:03" },
-            { name: "2021 Marine Corps Marathon", time: "5:28:40" },
-            { name: "2021 Space Coast Marathon", time: "4:59:30" },
-            { name: "2022 Disney Marathon", time: "5:32:16" },
-            { name: "2022 Air Force Marathon", time: "5:54:07" },
-            { name: "2023 Air Force Marathon", time: "5:44:12" },
-            { name: "2023 Duke City Marathon", time: "5:16:05" },
-            { name: "2024 Denver Colfax Marathon", time: "5:55:32" },
-            { name: "2024 Air Force Marathon", time: "5:58:39" },
-            { name: "2024 Duke City Marathon", time: "5:23:59" },
-            { name: "2025 Mesa Marathon", time: "5:42:32" },
-            { name: "2025 Bataan Memorial Death March", time: "6:26:48" }
-          ].map((marathon) => (
-            <TableRow key={`{marathon.name}`}>
-              <TableCell>{marathon.name}</TableCell>
-              <TableCell>{marathon.time}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </CardContent>
-</Card>
+      <Card>
+        <CardContent>
+          <Typography variant="h5" gutterBottom>
+            <DirectionsRunIcon sx={{ mr: 2 }} />
+            Marathon Achievements
+          </Typography>
+          <TableContainer>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Marathon</TableCell>
+                  <TableCell>Finish Time</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {[
+                  { name: "2019 Los Angeles Marathon", time: "5:22:44" },
+                  { name: "2019 Air Force Marathon", time: "5:21:33" },
+                  { name: "2020 Air Force Marathon", time: "5:23:52" },
+                  { name: "2021 Air Force Marathon", time: "5:23:03" },
+                  { name: "2021 Marine Corps Marathon", time: "5:28:40" },
+                  { name: "2021 Space Coast Marathon", time: "4:59:30" },
+                  { name: "2022 Disney Marathon", time: "5:32:16" },
+                  { name: "2022 Air Force Marathon", time: "5:54:07" },
+                  { name: "2023 Air Force Marathon", time: "5:44:12" },
+                  { name: "2023 Duke City Marathon", time: "5:16:05" },
+                  { name: "2024 Denver Colfax Marathon", time: "5:55:32" },
+                  { name: "2024 Air Force Marathon", time: "5:58:39" },
+                  { name: "2024 Duke City Marathon", time: "5:23:59" },
+                  { name: "2025 Mesa Marathon", time: "5:42:32" },
+                  { name: "2025 Bataan Memorial Death March", time: "6:26:48" }
+                ].map((marathon) => (
+                  <TableRow key={`{marathon.name}`}>
+                    <TableCell>{marathon.name}</TableCell>
+                    <TableCell>{marathon.time}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </CardContent>
+      </Card>
     </Container>
   );
 }
