@@ -325,32 +325,29 @@ export default function Home() {
         <TableHead>
           <TableRow>
             <TableCell>Marathon</TableCell>
-            <TableCell>Location</TableCell>
-            <TableCell>Year</TableCell>
             <TableCell>Finish Time</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {[
-            { name: "Los Angeles Marathon", location: "Los Angeles, CA", year: 2019, time: "03:45:22" },
-            { name: "Air Force Marathon", location: "Dayton, OH", year: 2019, time: "03:52:17" },
-            { name: "Air Force Marathon", location: "Dayton, OH", year: 2020, time: "03:40:55" },
-            { name: "Air Force Marathon", location: "Dayton, OH", year: 2021, time: "03:38:44" },
-            { name: "Space Coast Marathon", location: "Cocoa Beach, FL", year: 2021, time: "03:43:11" },
-            { name: "Disney Marathon", location: "Orlando, FL", year: 2022, time: "03:50:33" },
-            { name: "Air Force Marathon", location: "Dayton, OH", year: 2022, time: "03:37:26" },
-            { name: "Air Force Marathon", location: "Dayton, OH", year: 2023, time: "03:36:09" },
-            { name: "Duke City Marathon", location: "Albuquerque, NM", year: 2023, time: "03:42:55" },
-            { name: "Denver Marathon", location: "Denver, CO", year: 2024, time: "03:39:47" },
-            { name: "Air Force Marathon", location: "Dayton, OH", year: 2024, time: "03:35:33" },
-            { name: "Duke City Marathon", location: "Albuquerque, NM", year: 2024, time: "03:41:22" },
-            { name: "Mesa Marathon", location: "Mesa, AZ", year: 2025, time: "03:43:56" },
-            { name: "Bataan Memorial Death March", location: "White Sands, NM", year: 2025, time: "04:15:37" }
+            { name: "2019 Los Angeles Marathon", time: "5:22:44" },
+            { name: "2019 Air Force Marathon", time: "5:21:33" },
+            { name: "2020 Air Force Marathon", time: "5:23:52" },
+            { name: "2021 Air Force Marathon", time: "5:23:03" },
+            { name: "2021 Marine Corps Marathon", time: "5:28:40" },
+            { name: "2021 Space Coast Marathon", time: "4:59:30" },
+            { name: "2022 Disney Marathon", time: "5:32:16" },
+            { name: "2022 Air Force Marathon", time: "5:54:07" },
+            { name: "2023 Air Force Marathon", time: "5:44:12" },
+            { name: "2023 Duke City Marathon", time: "5:16:05" },
+            { name: "2024 Denver Colfax Marathon", time: "5:55:32" },
+            { name: "2024 Air Force Marathon", time: "5:58:39" },
+            { name: "2024 Duke City Marathon", time: "5:23:59" },
+            { name: "2025 Mesa Marathon", time: "5:42:32" },
+            { name: "2025 Bataan Memorial Death March", time: "6:26:48" }
           ].map((marathon) => (
-            <TableRow key={`${marathon.name}-${marathon.year}`}>
+            <TableRow key={`{marathon.name}`}>
               <TableCell>{marathon.name}</TableCell>
-              <TableCell>{marathon.location}</TableCell>
-              <TableCell>{marathon.year}</TableCell>
               <TableCell>{marathon.time}</TableCell>
             </TableRow>
           ))}
