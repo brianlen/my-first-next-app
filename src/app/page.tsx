@@ -203,11 +203,17 @@ export default function Home() {
               "MATLAB",
               "Python",
               "Julia",
+              "Javascript",
               "Typescript",
-              "React",
+              "Node.js",
+              "React.js",
               "Next.js",
               "MUI",
-              "OSDK"
+              "OSDK",
+              "Git",
+              "Docker",
+              "PostgreSQL",
+              "PyTorch"
             ].map((skill) => (
               <Chip 
                 key={skill} 
