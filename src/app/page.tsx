@@ -327,7 +327,7 @@ export default function Home() {
           Marathon Achievements
         </Typography>
         
-        <Box sx={{ height: 400, width: '100%' }}>
+        <Box sx={{ height: '100vh', width: '100%' }}>
           <DataGrid
             rows={[
               { id: 1, name: "2019 Los Angeles Marathon", time: "5:22:44" },
