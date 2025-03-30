@@ -33,6 +33,8 @@ import StarIcon from '@mui/icons-material/Star';
 import PlaceIcon from '@mui/icons-material/Place';
 import PublicIcon from '@mui/icons-material/Public';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+
 
 export default function Home() {
   return (
@@ -325,49 +327,57 @@ export default function Home() {
 
       {/* Marathons */}
       <Card>
-        <CardContent>
-          <Typography variant="h5" gutterBottom>
-            <DirectionsRunIcon sx={{ mr: 2 }} />
-            Marathon Achievements
-          </Typography>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell width="50px">#</TableCell>
-                  <TableCell>Marathon</TableCell>
-                  <TableCell>Finish Time</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {[
-                  { name: "2019 Los Angeles Marathon", time: "5:22:44" },
-                  { name: "2019 Air Force Marathon", time: "5:21:33" },
-                  { name: "2020 Air Force Marathon", time: "5:23:52" },
-                  { name: "2021 Air Force Marathon", time: "5:23:03" },
-                  { name: "2021 Marine Corps Marathon", time: "5:28:40" },
-                  { name: "2021 Space Coast Marathon", time: "4:59:30" },
-                  { name: "2022 Disney Marathon", time: "5:32:16" },
-                  { name: "2022 Air Force Marathon", time: "5:54:07" },
-                  { name: "2023 Air Force Marathon", time: "5:44:12" },
-                  { name: "2023 Duke City Marathon", time: "5:16:05" },
-                  { name: "2024 Denver Colfax Marathon", time: "5:55:32" },
-                  { name: "2024 Air Force Marathon", time: "5:58:39" },
-                  { name: "2024 Duke City Marathon", time: "5:23:59" },
-                  { name: "2025 Mesa Marathon", time: "5:42:32" },
-                  { name: "2025 Bataan Memorial Death March", time: "6:26:48" }
-                ].map((marathon, index) => (
-                  <TableRow key={marathon.name}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>{marathon.name}</TableCell>
-                    <TableCell>{marathon.time}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </CardContent>
-      </Card>
+      <CardContent>
+        <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center' }}>
+          <DirectionsRunIcon sx={{ mr: 2 }} />
+          Marathon Achievements
+        </Typography>
+        
+        <Box sx={{ height: 400, width: '100%' }}>
+          <DataGrid
+            rows={[
+              { id: 1, name: "2019 Los Angeles Marathon", time: "5:22:44" },
+              { id: 2, name: "2019 Air Force Marathon", time: "5:21:33" },
+              { id: 3, name: "2020 Air Force Marathon", time: "5:23:52" },
+              { id: 4, name: "2021 Air Force Marathon", time: "5:23:03" },
+              { id: 5, name: "2021 Marine Corps Marathon", time: "5:28:40" },
+              { id: 6, name: "2021 Space Coast Marathon", time: "4:59:30" },
+              { id: 7, name: "2022 Disney Marathon", time: "5:32:16" },
+              { id: 8, name: "2022 Air Force Marathon", time: "5:54:07" },
+              { id: 9, name: "2023 Air Force Marathon", time: "5:44:12" },
+              { id: 10, name: "2023 Duke City Marathon", time: "5:16:05" },
+              { id: 11, name: "2024 Denver Colfax Marathon", time: "5:55:32" },
+              { id: 12, name: "2024 Air Force Marathon", time: "5:58:39" },
+              { id: 13, name: "2024 Duke City Marathon", time: "5:23:59" },
+              { id: 14, name: "2025 Mesa Marathon", time: "5:42:32" },
+              { id: 15, name: "2025 Bataan Memorial Death March", time: "6:26:48" }
+            ]}
+            columns={[
+              { field: 'id', headerName: '#', width: 70 },
+              { field: 'name', headerName: 'Marathon', flex: 1, minWidth: 200, sortable: true },
+              { field: 'time', headerName: 'Finish Time', width: 130, sortable: true }
+            ]}
+            initialState={{
+              pagination: {
+                paginationModel: { pageSize: 10 },
+              },
+              sorting: {
+                sortModel: [{ field: 'id', sort: 'asc' }],
+              },
+            }}
+            pageSizeOptions={[5, 10, 15]}
+            disableRowSelectionOnClick
+            slots={{ toolbar: GridToolbar }}
+            slotProps={{
+              toolbar: {
+                showQuickFilter: true,
+                quickFilterProps: { debounceMs: 300 },
+              },
+            }}
+          />
+        </Box>
+      </CardContent>
+    </Card>
     </Container>
   );
 }
