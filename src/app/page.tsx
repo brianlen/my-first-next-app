@@ -14,12 +14,6 @@ import {
   List, 
   ListItem, 
   ListItemText,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   Link
 } from '@mui/material';
 import WorkIcon from '@mui/icons-material/Work';
