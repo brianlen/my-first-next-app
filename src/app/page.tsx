@@ -226,7 +226,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      {/* Skills */}
+      {/* Key Skills */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
@@ -266,7 +266,7 @@ export default function Home() {
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {[
               { name: "English", level: "Advanced" },
-              { name: "Spanish", level: "Basic" },
+              { name: "Spanish", level: "Novice" },
               { name: "French", level: "Basic" },
               { name: "Korean", level: "Basic" },
               { name: "Vietnamese", level: "Basic" }
@@ -318,7 +318,7 @@ export default function Home() {
             Volunteer Work
           </Typography>
           <Typography variant="body1">
-            Volunteer with Habitat for Humanity
+            Habitat for Humanity
           </Typography>
         </CardContent>
       </Card>
@@ -334,6 +334,7 @@ export default function Home() {
             <Table>
               <TableHead>
                 <TableRow>
+                  <TableCell width="50px">#</TableCell>
                   <TableCell>Marathon</TableCell>
                   <TableCell>Finish Time</TableCell>
                 </TableRow>
@@ -355,8 +356,9 @@ export default function Home() {
                   { name: "2024 Duke City Marathon", time: "5:23:59" },
                   { name: "2025 Mesa Marathon", time: "5:42:32" },
                   { name: "2025 Bataan Memorial Death March", time: "6:26:48" }
-                ].map((marathon) => (
-                  <TableRow key={`{marathon.name}`}>
+                ].map((marathon, index) => (
+                  <TableRow key={marathon.name}>
+                    <TableCell>{index + 1}</TableCell>
                     <TableCell>{marathon.name}</TableCell>
                     <TableCell>{marathon.time}</TableCell>
                   </TableRow>
