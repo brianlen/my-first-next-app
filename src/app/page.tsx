@@ -33,6 +33,8 @@ import StarIcon from '@mui/icons-material/Star';
 import PlaceIcon from '@mui/icons-material/Place';
 import PublicIcon from '@mui/icons-material/Public';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+
 
 
 export default function Home() {
@@ -230,7 +232,7 @@ export default function Home() {
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
-            <CodeIcon sx={{ mr: 2 }} />
+            <AutoAwesomeIcon sx={{ mr: 2 }} />
             AI Skills
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -243,7 +245,7 @@ export default function Home() {
               "Gemini 2.5 Pro",         // Feb 2024
               "Palantir Foundry + AIP", // 2016 (Foundry), AIP (2023)
               "Ontology SDK",           // 2024
-              "Firebase AI Studio"         // 2024
+              "Firebase AI Studio"      // 2024
             ].map((skill) => (
               <Chip 
                 key={skill} 
@@ -388,7 +390,7 @@ export default function Home() {
                   { name: "2025 Mesa Marathon", time: "5:42:32" },
                   { name: "2025 Bataan Memorial Death March", time: "6:26:48" },
                   { name: "2025 Albuquerque Half Marathon", time: "2:17:39" },
-                  { name: "2025 Oklahoma City Memorial Marathon", time: "0:00:00" }
+                  { name: "2025 Oklahoma City Memorial Marathon", time: "5:00:00" }
                 ].map((marathon, index) => (
                   <TableRow key={marathon.name}>
                     <TableCell>{index + 1}</TableCell>
