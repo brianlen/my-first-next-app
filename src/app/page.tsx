@@ -210,7 +210,6 @@ export default function Home() {
               "React.js",
               "Next.js",
               "MUI",
-              "OSDK",
               "Git",
               "Docker",
               "PostgreSQL",
@@ -226,6 +225,37 @@ export default function Home() {
           </Box>
         </CardContent>
       </Card>
+
+      {/* AI Skills */}
+      <Card sx={{ mb: 3 }}>
+        <CardContent>
+          <Typography variant="h5" gutterBottom>
+            <CodeIcon sx={{ mr: 2 }} />
+            AI Skills
+          </Typography>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+            {[
+              "ChatGPT",                // Nov 2022
+              "Perplexity.ai",          // Dec 2022
+              "Anthropic Claude",       // Mar 2023
+              "Microsoft Copilot",      // Mar 2023 (Office integration)
+              "Cursor",                 // May 2023
+              "Gemini 2.5 Pro",         // Feb 2024
+              "Palantir Foundry + AIP", // 2016 (Foundry), AIP (2023)
+              "Ontology SDK",           // 2024
+              "Firebase AI Studio"         // 2024
+            ].map((skill) => (
+              <Chip 
+                key={skill} 
+                label={skill} 
+                color="secondary" 
+                variant="outlined" 
+              />
+            ))}
+          </Box>
+        </CardContent>
+      </Card>
+
 
       {/* Key Skills */}
       <Card sx={{ mb: 3 }}>
@@ -356,7 +386,9 @@ export default function Home() {
                   { name: "2024 Air Force Marathon", time: "5:58:39" },
                   { name: "2024 Duke City Marathon", time: "5:23:59" },
                   { name: "2025 Mesa Marathon", time: "5:42:32" },
-                  { name: "2025 Bataan Memorial Death March", time: "6:26:48" }
+                  { name: "2025 Bataan Memorial Death March", time: "6:26:48" },
+                  { name: "2025 Albuquerque Half Marathon", time: "2:17:39" },
+                  { name: "2025 Oklahoma City Memorial Marathon", time: "0:00:00" }
                 ].map((marathon, index) => (
                   <TableRow key={marathon.name}>
                     <TableCell>{index + 1}</TableCell>
