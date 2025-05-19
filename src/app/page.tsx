@@ -390,7 +390,7 @@ export default function Home() {
                   { name: "2025 Mesa Marathon", time: "5:42:32" },
                   { name: "2025 Bataan Memorial Death March", time: "6:26:48" },
                   { name: "2025 Albuquerque Half Marathon", time: "2:17:39" },
-                  { name: "2025 Oklahoma City Memorial Marathon", time: "5:00:00" }
+                  { name: "2025 Oklahoma City Memorial Marathon", time: "5:30:18" }
                 ].map((marathon, index) => (
                   <TableRow key={marathon.name}>
                     <TableCell>{index + 1}</TableCell>
