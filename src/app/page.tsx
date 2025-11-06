@@ -125,7 +125,7 @@ export default function Home() {
             {[
               {
                 title: "Engineer, United States Space Force",
-                period: "Apr 2023 - Feb 2026",
+                period: "Apr 2023 - Jan 2026",
                 location: "Kirtland AFB, Albuquerque, NM"
               },
               {
@@ -168,12 +168,12 @@ export default function Home() {
                 year: "August 2024"
               },
               {
-                degree: "Master's in Electrical Engineering",
+                degree: "Master of Science in Electrical Engineering",
                 institution: "Air Force Institute of Technology, Dayton, OH",
                 year: "March 2021"
               },
               {
-                degree: "Bachelor's in Aerospace Engineering",
+                degree: "Bachelor of Science in Aerospace Engineering",
                 institution: "University of Michigan, Ann Arbor, MI",
                 year: "May 2015",
                 honors: "Cum Laude"
@@ -330,7 +330,8 @@ export default function Home() {
               { country: "Canada", year: 2022 },
               { country: "United Kingdom", year: 2023 },
               { country: "France", year: 2024 },
-              { country: "South Korea", year: 2024 }
+              { country: "South Korea", year: 2024 },
+              { country: "Vietnam", year: 2025 }
             ].map((visit) => (
               <Chip 
                 key={visit.country} 
@@ -351,7 +352,7 @@ export default function Home() {
             Volunteer Work
           </Typography>
           <Typography variant="body1">
-            Habitat for Humanity
+            Habitat for Humanity (2021-Present)
           </Typography>
         </CardContent>
       </Card>
