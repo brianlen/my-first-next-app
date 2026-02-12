@@ -82,34 +82,33 @@ export default function Home() {
             <Grid size={{ xs: 12, sm: 3 }}>
               <Box display="flex" alignItems="center">
                 <ContactMailIcon sx={{ mr: 2 }} />
-                {/* Clickable mailto link */}
-                <Link
-                  href="mailto:henry.cho.af@gmail.com"
-                  underline="hover"
-                  sx={{ mr: 1 }}
-                >
-                  <Typography color="primary">
-                    henry.cho.af@gmail.com
-                  </Typography>
-                </Link>
-
-                {/* Copy Button */}
                 <Tooltip title="Copy email">
-                  <IconButton
-                    size="small"
+                  <Typography
+                    color="primary"
+                    sx={{ cursor: "pointer" }}
                     onClick={() =>
                       navigator.clipboard.writeText("henry.cho.af@gmail.com")
                     }
                   >
-                    <ContentCopyIcon fontSize="small" />
-                  </IconButton>
+                    henry.cho.af@gmail.com
+                  </Typography>
                 </Tooltip>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, sm: 3 }}>
               <Box display="flex" alignItems="center">
                 <PhoneIcon sx={{ mr: 2 }} />
-                <Typography>+1 (626) 759-8684</Typography>
+                <Tooltip title="Copy phone number">
+                  <Typography
+                    color="primary"
+                    sx={{ cursor: "pointer" }}
+                    onClick={() =>
+                      navigator.clipboard.writeText("+1-626-759-8684")
+                    }
+                  >
+                    +1-626-759-8684
+                  </Typography>
+                </Tooltip>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, sm: 3 }}>
