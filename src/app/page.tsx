@@ -1,18 +1,19 @@
 "use client";
 
 import React from 'react';
-import { 
-  Container, 
-  Typography, 
-  Grid, 
-  Card, 
-  CardContent, 
-  Chip, 
-  Avatar, 
-  Box, 
-  Divider, 
-  List, 
-  ListItem, 
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Chip,
+  Avatar,
+  Box,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
   ListItemText,
   Link,
   TableContainer,
@@ -20,7 +21,8 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  TableBody
+  TableBody,
+  Tooltip
 } from '@mui/material';
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
@@ -29,6 +31,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import CodeIcon from '@mui/icons-material/Code';
 import PhoneIcon from '@mui/icons-material/Phone';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import StarIcon from '@mui/icons-material/Star';
 import PlaceIcon from '@mui/icons-material/Place';
 import PublicIcon from '@mui/icons-material/Public';
@@ -43,32 +46,32 @@ export default function Home() {
       {/* Header */}
       <Card sx={{ mb: 3 }}>
         <CardContent>
-        <Grid container spacing={3} alignItems="center" mb={4}>
-          <Grid size={{ xs: 12, md: 3 }}>
-            <Avatar 
-              alt="Henry Cho" 
-              sx={{ 
-                width: 200, 
-                height: 200, 
-                margin: 'auto',
-                border: '4px solid',
-                borderColor: 'primary.main'
-              }}
-              src="/api/placeholder/200/200"
-            />
+          <Grid container spacing={3} alignItems="center" mb={4}>
+            <Grid size={{ xs: 12, md: 3 }}>
+              <Avatar
+                alt="Henry Cho"
+                sx={{
+                  width: 200,
+                  height: 200,
+                  margin: 'auto',
+                  border: '4px solid',
+                  borderColor: 'primary.main'
+                }}
+                src="/api/placeholder/200/200"
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 9 }}>
+              <Typography variant="h3" component="h1" gutterBottom>
+                Henry Cho
+              </Typography>
+              <Typography variant="h5" color="text.secondary" gutterBottom>
+                Space Systems Engineer & Research Analyst
+              </Typography>
+              <Typography variant="body1">
+                Experienced space systems engineer and research analyst with a proven track record in satellite technology, software development, and strategic space operations. Skilled in project management, cross-functional team leadership, and technical intelligence analysis.
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid size={{ xs: 12, md: 9 }}>
-            <Typography variant="h3" component="h1" gutterBottom>
-              Henry Cho
-            </Typography>
-            <Typography variant="h5" color="text.secondary" gutterBottom>
-              Space Systems Engineer & Research Analyst
-            </Typography>
-            <Typography variant="body1">
-              Experienced space systems engineer and research analyst with a proven track record in satellite technology, software development, and strategic space operations. Skilled in project management, cross-functional team leadership, and technical intelligence analysis.
-            </Typography>
-          </Grid>
-        </Grid>
         </CardContent>
       </Card>
 
@@ -79,7 +82,28 @@ export default function Home() {
             <Grid size={{ xs: 12, sm: 3 }}>
               <Box display="flex" alignItems="center">
                 <ContactMailIcon sx={{ mr: 2 }} />
-                <Typography>henry.cho.af@gmail.com</Typography>
+                {/* Clickable mailto link */}
+                <Link
+                  href="mailto:henry.cho.af@gmail.com"
+                  underline="hover"
+                  sx={{ mr: 1 }}
+                >
+                  <Typography color="primary">
+                    henry.cho.af@gmail.com
+                  </Typography>
+                </Link>
+
+                {/* Copy Button */}
+                <Tooltip title="Copy email">
+                  <IconButton
+                    size="small"
+                    onClick={() =>
+                      navigator.clipboard.writeText("henry.cho.af@gmail.com")
+                    }
+                  >
+                    <ContentCopyIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
               </Box>
             </Grid>
             <Grid size={{ xs: 12, sm: 3 }}>
@@ -95,13 +119,13 @@ export default function Home() {
               </Box>
             </Grid>
             <Grid size={{ xs: 12, sm: 3 }}>
-              <Link 
-                href="https://www.linkedin.com/in/the-henry-cho" 
-                target="_blank" 
+              <Link
+                href="https://www.linkedin.com/in/the-henry-cho"
+                target="_blank"
                 rel="noopener noreferrer"
-                sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
                   textDecoration: 'none',
                   color: 'primary.main'
                 }}
@@ -217,11 +241,11 @@ export default function Home() {
               "PostgreSQL",
               "PyTorch"
             ].map((skill) => (
-              <Chip 
-                key={skill} 
-                label={skill} 
-                color="primary" 
-                variant="outlined" 
+              <Chip
+                key={skill}
+                label={skill}
+                color="primary"
+                variant="outlined"
               />
             ))}
           </Box>
@@ -247,11 +271,11 @@ export default function Home() {
               "Ontology SDK",           // 2024
               "Firebase AI Studio"      // 2024
             ].map((skill) => (
-              <Chip 
-                key={skill} 
-                label={skill} 
-                color="secondary" 
-                variant="outlined" 
+              <Chip
+                key={skill}
+                label={skill}
+                color="secondary"
+                variant="outlined"
               />
             ))}
           </Box>
@@ -268,21 +292,21 @@ export default function Home() {
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
             {[
-              "Space Systems Engineering", 
-              "Intelligence Analysis", 
-              "Project Management", 
-              "Software Development", 
-              "Risk Assessment", 
-              "Satellite Operations", 
+              "Space Systems Engineering",
+              "Intelligence Analysis",
+              "Project Management",
+              "Software Development",
+              "Risk Assessment",
+              "Satellite Operations",
               "Technical Intelligence",
               "Cybersecurity",
               "Team Leadership"
             ].map((skill) => (
-              <Chip 
-                key={skill} 
-                label={skill} 
-                color="primary" 
-                variant="outlined" 
+              <Chip
+                key={skill}
+                label={skill}
+                color="primary"
+                variant="outlined"
               />
             ))}
           </Box>
@@ -304,11 +328,11 @@ export default function Home() {
               { name: "Korean", level: "Basic" },
               { name: "Vietnamese", level: "Basic" }
             ].map((lang) => (
-              <Chip 
-                key={lang.name} 
-                label={`${lang.name} (${lang.level})`} 
-                color="secondary" 
-                variant="outlined" 
+              <Chip
+                key={lang.name}
+                label={`${lang.name} (${lang.level})`}
+                color="secondary"
+                variant="outlined"
               />
             ))}
           </Box>
@@ -333,11 +357,11 @@ export default function Home() {
               { country: "South Korea", year: 2024 },
               { country: "Vietnam", year: 2025 }
             ].map((visit) => (
-              <Chip 
-                key={visit.country} 
-                label={`${visit.country} (${visit.year})`} 
-                color="secondary" 
-                variant="outlined" 
+              <Chip
+                key={visit.country}
+                label={`${visit.country} (${visit.year})`}
+                color="secondary"
+                variant="outlined"
               />
             ))}
           </Box>
