@@ -896,6 +896,14 @@ function MoviesSection() {
   );
 }
 
+function MoviesTab() {
+  return (
+    <Box>
+      <MoviesSection />
+    </Box>
+  );
+}
+
 function BooksSection() {
   const sortedBooks = booksRead.sort((a, b) => b.year - a.year);
 
@@ -936,6 +944,14 @@ function BooksSection() {
           </TableBody>
         </Table>
       </TableContainer>
+    </Box>
+  );
+}
+
+function BooksTab() {
+  return (
+    <Box>
+      <BooksSection />
     </Box>
   );
 }
@@ -1070,6 +1086,76 @@ function BreathingSection() {
   );
 }
 
+function PodcastsSection() {
+  return (
+    <Card sx={{ mb: 3 }}>
+      <CardContent>
+        <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <PodcastsIcon /> Favorite Podcasts
+        </Typography>
+        <Divider sx={{ my: 2 }} />
+        <Grid container spacing={3}>
+          {favoritePodcasts.map((podcast) => (
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: 4
+                  }
+                }}
+                component="a"
+                href={podcast.youtubeChannel}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={podcast.image}
+                  alt={podcast.name}
+                  sx={{ objectFit: 'cover' }}
+                />
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" gutterBottom>
+                    {podcast.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Host: {podcast.host}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    endIcon={<OpenInNewIcon />}
+                    fullWidth
+                  >
+                    Watch on YouTube
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </CardContent>
+    </Card>
+  );
+}
+
+function PodcastsTab() {
+  return (
+    <Box>
+      <PodcastsSection />
+    </Box>
+  );
+}
+
 function HabitatSection() {
   return (
     <Box sx={{ mb: 4 }}>
@@ -1129,81 +1215,14 @@ function HabitatSection() {
   );
 }
 
-function MoviesTab() {
-  return (
-    <Box>
-      <MoviesSection />
-    </Box>
-  );
-}
 
 function LifestyleTab() {
   return (
     <Box>
-      <BooksSection />
       <NutritionSection />
       <SleepSection />
       <BreathingSection />
       <HabitatSection />
-
-      {/* Favorite Podcasts */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <PodcastsIcon /> Favorite Podcasts
-          </Typography>
-          <Divider sx={{ my: 2 }} />
-          <Grid container spacing={3}>
-            {favoritePodcasts.map((podcast) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s',
-                    '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: 4
-                    }
-                  }}
-                  component="a"
-                  href={podcast.youtubeChannel}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: 'none' }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={podcast.image}
-                    alt={podcast.name}
-                    sx={{ objectFit: 'cover' }}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography variant="h6" gutterBottom>
-                      {podcast.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Host: {podcast.host}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      endIcon={<OpenInNewIcon />}
-                      fullWidth
-                    >
-                      Watch on YouTube
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </CardContent>
-      </Card>
     </Box>
   );
 }
@@ -1329,8 +1348,10 @@ export default function Home() {
               <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
               <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
               <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
-              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(3)} />
-              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(4)} />
+              <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
+              <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
+              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
+              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
             </Tabs>
           </Box>
 
@@ -1344,9 +1365,15 @@ export default function Home() {
             <MoviesTab />
           </TabPanel>
           <TabPanel value={activeTab} index={3}>
-            <LifestyleTab />
+            <BooksTab />
           </TabPanel>
           <TabPanel value={activeTab} index={4}>
+            <PodcastsTab />
+          </TabPanel>
+          <TabPanel value={activeTab} index={5}>
+            <LifestyleTab />
+          </TabPanel>
+          <TabPanel value={activeTab} index={6}>
             <RecommendationsTab />
           </TabPanel>
         </Card>
