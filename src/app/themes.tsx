@@ -17,7 +17,7 @@ export const lightTheme = createTheme({
             dark: '#9a0036',
         },
         background: {
-            default: '#f5f5f5',  // Light gray background
+            default: '#ffffff', // White for light theme
             paper: '#ffffff',     // White cards
         },
         text: {
@@ -48,15 +48,6 @@ export const darkTheme = createTheme({
         text: {
             primary: '#ffffff',
             secondary: 'rgba(255, 255, 255, 0.7)',
-        },
-    },
-    components: {
-        MuiCard: {
-            styleOverrides: {
-                root: {
-                    backgroundImage: 'none',  // Remove MUI gradient
-                },
-            },
         },
     },
 });
