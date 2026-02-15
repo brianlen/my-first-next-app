@@ -52,6 +52,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import CropSquareIcon from '@mui/icons-material/CropSquare';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
+import BedIcon from '@mui/icons-material/Bed';
 import ThemeToggle from './components/ThemeToggle';
 // Import country flags (install with: npm install country-flag-icons)
 import US from 'country-flag-icons/react/3x2/US';
@@ -148,7 +151,9 @@ const marathons = [
   { name: "2025 Oklahoma City Memorial Marathon", year: 2025, time: "5:30:18" },
   { name: "2025 Air Force Marathon", year: 2025, time: "6:39:56" },
   { name: "2025 Duke City Marathon", year: 2025, time: "6:08:49" },
-  { name: "2025 Albuquerque Fiesta Marathon", year: 2025, time: "6:00:21" }
+  { name: "2025 Albuquerque Fiesta Marathon", year: 2025, time: "6:00:21" },
+  { name: "2026 Bataan Memorial Death March (35-lbs rucking)", year: 2026, time: "hh:mm:ss" },
+  { name: "2026 Albuquerque Marathon", year: 2026, time: "hh:mm:ss" }
 ];
 
 const countriesVisited = [
@@ -246,9 +251,9 @@ const habitatHouses = [
 ];
 
 const breathingTechniques = [
-  { name: "Box Breathing", description: "4-4-4-4 pattern for stress reduction" },
-  { name: "Wim Hof Method", description: "30 power breaths + retention for energy" },
-  { name: "4-7-8 Technique", description: "Inhale 4, hold 7, exhale 8 for sleep" }
+  { name: "Box Breathing", description: "4-4-4-4 pattern for stress reduction", icon: CropSquareIcon },
+  { name: "Wim Hof Method", description: "30 power breaths + retention for energy", icon: FlashOnIcon },
+  { name: "4-7-8 Technique", description: "Inhale 4, hold 7, exhale 8 for sleep", icon: BedIcon }
 ];
 
 const recommendations = [
@@ -454,7 +459,15 @@ function ExperienceSection() {
       </Typography>
       {workExperience.map((job, index) => (
         <Box key={index}>
-          <Card elevation={2} sx={{ mb: 2 }}>
+          <Card elevation={2}
+            sx={{
+              mb: 2,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h6" gutterBottom>{job.title}</Typography>
               <Typography variant="body2" color="text.secondary">{job.period}</Typography>
@@ -476,7 +489,15 @@ function EducationSection() {
       </Typography>
       {education.map((edu, index) => (
         <Box key={index}>
-          <Card elevation={2} sx={{ mb: 2 }}>
+          <Card elevation={2}
+            sx={{
+              mb: 2,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h6" gutterBottom>{edu.degree}</Typography>
               <Typography variant="body2" color="text.secondary">{edu.institution}</Typography>
@@ -534,7 +555,16 @@ function LanguagesSection() {
       <Grid container spacing={2}>
         {languages.map((lang) => (
           <Grid key={lang.name} size={{ xs: 6, sm: 4, md: 2 }}>
-            <Card elevation={2} sx={{ textAlign: 'center', height: '100%' }}>
+            <Card elevation={2}
+              sx={{
+                textAlign: 'center',
+                height: '100%',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
               <CardContent>
                 <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>
                   <lang.flag style={{ width: '60px', height: 'auto', borderRadius: '4px' }} />
@@ -609,7 +639,14 @@ function MarathonSection() {
 
       <Grid container spacing={2} sx={{ mb: 3 }}>
         <Grid size={{ xs: 12, sm: 4 }}>
-          <Card elevation={2}>
+          <Card elevation={2}
+            sx={{
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h6" align="center">{marathons.length}</Typography>
               <Typography variant="body2" color="text.secondary" align="center">
@@ -619,7 +656,14 @@ function MarathonSection() {
           </Card>
         </Grid>
         <Grid size={{ xs: 12, sm: 4 }}>
-          <Card elevation={2}>
+          <Card elevation={2}
+            sx={{
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h6" align="center">
                 {avgHours}:{avgMinutes.toString().padStart(2, '0')}:
@@ -632,7 +676,14 @@ function MarathonSection() {
           </Card>
         </Grid>
         <Grid size={{ xs: 12, sm: 4 }}>
-          <Card elevation={2}>
+          <Card elevation={2}
+            sx={{
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h6" align="center">{bestTime.time}</Typography>
               <Typography variant="body2" color="text.secondary" align="center">
@@ -690,7 +741,15 @@ function CountriesSection() {
       <Grid container spacing={2}>
         {countriesVisited.map((visit) => (
           <Grid size={{ xs: 12, sm: 6, md: 3 }} key={visit.country}>
-            <Card elevation={2}>
+            <Card elevation={2}
+              sx={{
+                height: '100%',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
               <CardContent>
                 <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>
                   <visit.flag style={{ width: '80px', height: 'auto', borderRadius: '4px' }} />
@@ -890,7 +949,15 @@ function NutritionSection() {
       <Grid container spacing={3}>
         {nutritionRankings.map((item) => (
           <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.meal}>
-            <Card elevation={3} sx={{ height: '100%' }}>
+            <Card elevation={3}
+              sx={{
+                height: '100%',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
               <CardMedia
                 component="img"
                 height="200"
@@ -924,7 +991,14 @@ function SleepSection() {
       </Typography>
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <Card elevation={2}>
+          <Card elevation={2}
+            sx={{
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h4" align="center">
                 7.2 hrs
@@ -936,7 +1010,14 @@ function SleepSection() {
           </Card>
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <Card elevation={2}>
+          <Card elevation={2}
+            sx={{
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
             <CardContent>
               <Typography variant="h4" align="center">
                 85%
@@ -961,18 +1042,30 @@ function BreathingSection() {
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <AirIcon /> Breathing Techniques
       </Typography>
-      {breathingTechniques.map((technique) => (
-        <Card elevation={2} sx={{ mb: 2 }} key={technique.name}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              {technique.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {technique.description}
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+      <Grid container spacing={2}>
+        {breathingTechniques.map((technique) => (
+          <Grid size={{ xs: 12, sm: 4 }} key={technique.name}>
+            <Card elevation={2}
+              sx={{
+                height: '100%',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
+              <CardContent>
+                <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <technique.icon /> {technique.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {technique.description}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }
@@ -1006,7 +1099,15 @@ function HabitatSection() {
       <Grid container spacing={3}>
         {habitatHouses.map((house) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={house.address}>
-            <Card elevation={3} sx={{ height: '100%' }}>
+            <Card elevation={3}
+              sx={{
+                height: '100%',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
               <CardMedia
                 component="img"
                 height="200"
@@ -1122,7 +1223,17 @@ function RecommendationsTab() {
       <Grid container spacing={3}>
         {recommendations.map((product) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.name}>
-            <Card elevation={3} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <Card elevation={3}
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
               <CardMedia
                 component="img"
                 height="200"
