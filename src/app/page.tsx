@@ -20,7 +20,6 @@ import {
   Tabs,
   Tab,
   Button,
-  Rating,
   Paper,
   Collapse,
   IconButton,
@@ -44,6 +43,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import HotelIcon from '@mui/icons-material/Hotel';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import AirIcon from '@mui/icons-material/Air';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -1054,7 +1054,7 @@ function LifestyleTab() {
           <Divider sx={{ my: 2 }} />
           <Grid container spacing={3}>
             {favoritePodcasts.map((podcast) => (
-              <Grid item xs={12} sm={6} md={4} key={podcast.name}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
                 <Card
                   sx={{
                     height: '100%',
@@ -1194,7 +1194,7 @@ export default function Home() {
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        background: (theme) => theme.palette.background.default,
         py: 4,
       }}
     >
@@ -1218,7 +1218,7 @@ export default function Home() {
               <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
               <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
               <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
-              <Tab label="Lifestyle" icon={<RestaurantIcon />} {...a11yProps(3)} />
+              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(3)} />
               <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(4)} />
             </Tabs>
           </Box>
