@@ -817,81 +817,53 @@ function TravelTab() {
 // ==================== LIFESTYLE TAB COMPONENTS ====================
 
 function MoviesSection() {
-  const [openYears, setOpenYears] = useState<{ [key: number]: boolean }>({});
-
-  const moviesByYear = moviesWatched.reduce((acc, movie) => {
-    if (!acc[movie.year]) acc[movie.year] = [];
-    acc[movie.year].push(movie);
-    return acc;
-  }, {} as { [key: number]: typeof moviesWatched });
-
-  const years = Object.keys(moviesByYear)
-    .map(Number)
-    .sort((a, b) => b - a);
-
-  const toggleYear = (year: number) => {
-    setOpenYears((prev) => ({ ...prev, [year]: !prev[year] }));
-  };
+  const sortedMovies = [...moviesWatched].sort((a, b) => b.year - a.year);
 
   return (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <MovieIcon /> Movies Watched
       </Typography>
-      {years.map((year) => (
-        <Box key={year} sx={{ mb: 2 }}>
-          <Card elevation={2}>
-            <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Typography variant="h6">{year}</Typography>
-                <IconButton onClick={() => toggleYear(year)} size="small">
-                  {openYears[year] ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                </IconButton>
-              </Box>
-              <Collapse in={openYears[year]} timeout="auto" unmountOnExit>
-                <TableContainer sx={{ mt: 2 }}>
-                  <Table size="small">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Title</TableCell>
-                        <TableCell>Genre</TableCell>
-                        <TableCell align="center">Rating</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {moviesByYear[year].map((movie) => (
-                        <TableRow key={movie.title}>
-                          <TableCell>
-                            <Tooltip
-                              title={
-                                <img
-                                  src={movie.poster}
-                                  alt={movie.title}
-                                  style={{ width: '150px', height: 'auto' }}
-                                />
-                              }
-                            >
-                              <span style={{ cursor: 'pointer' }}>{movie.title}</span>
-                            </Tooltip>
-                          </TableCell>
-                          <TableCell>{movie.genre}</TableCell>
-                          <TableCell align="center">
-                            {movie.rating === 'up' ? (
-                              <ThumbUpIcon color="success" />
-                            ) : (
-                              <ThumbDownIcon color="error" />
-                            )}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Collapse>
-            </CardContent>
-          </Card>
-        </Box>
-      ))}
+      <TableContainer component={Paper} sx={{ mt: 2 }}>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Year</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Genre</TableCell>
+              <TableCell align="center">Rating</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedMovies.map((movie) => (
+              <TableRow key={movie.title}>
+                <TableCell>{movie.year}</TableCell>
+                <TableCell>
+                  <Tooltip
+                    title={
+                      <img
+                        src={movie.poster}
+                        alt={movie.title}
+                        style={{ width: '150px', height: 'auto' }}
+                      />
+                    }
+                  >
+                    <span style={{ cursor: 'pointer' }}>{movie.title}</span>
+                  </Tooltip>
+                </TableCell>
+                <TableCell>{movie.genre}</TableCell>
+                <TableCell align="center">
+                  {movie.rating === 'up' ? (
+                    <ThumbUpIcon color="success" />
+                  ) : (
+                    <ThumbDownIcon color="error" />
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 }
@@ -1091,7 +1063,7 @@ function PodcastsSection() {
     <Card sx={{ mb: 3 }}>
       <CardContent>
         <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <PodcastsIcon /> Favorite Podcasts
+          <PodcastsIcon /> Podcasts Listened
         </Typography>
         <Divider sx={{ my: 2 }} />
         <Grid container spacing={3}>
