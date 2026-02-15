@@ -1060,63 +1060,60 @@ function BreathingSection() {
 
 function PodcastsSection() {
   return (
-    <Card sx={{ mb: 3 }}>
-      <CardContent>
-        <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <PodcastsIcon /> Podcasts Listened
-        </Typography>
-        <Divider sx={{ my: 2 }} />
-        <Grid container spacing={3}>
-          {favoritePodcasts.map((podcast) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
-              <Card
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s',
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: 4
-                  }
-                }}
-                component="a"
-                href={podcast.youtubeChannel}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none' }}
-              >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={podcast.image}
-                  alt={podcast.name}
-                  sx={{ objectFit: 'cover' }}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" gutterBottom>
-                    {podcast.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Host: {podcast.host}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    endIcon={<OpenInNewIcon />}
-                    fullWidth
-                  >
-                    Watch on YouTube
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </CardContent>
-    </Card>
+    <Box sx={{ mb: 3 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <PodcastsIcon /> Podcasts Listened
+      </Typography>
+      <Grid container spacing={3}>
+        {favoritePodcasts.map((podcast) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
+            <Card
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                cursor: 'pointer',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+              component="a"
+              href={podcast.youtubeChannel}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <CardMedia
+                component="img"
+                height="200"
+                image={podcast.image}
+                alt={podcast.name}
+                sx={{ objectFit: 'cover' }}
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" gutterBottom>
+                  {podcast.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Host: {podcast.host}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  endIcon={<OpenInNewIcon />}
+                  fullWidth
+                >
+                  Watch on YouTube
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
   );
 }
 
