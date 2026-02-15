@@ -1307,10 +1307,18 @@ export default function Home() {
               onChange={handleTabChange}
               aria-label="portfolio tabs"
               variant="scrollable"
-              scrollButtons="auto"
+              scrollButtons={false}
               sx={{
                 '.MuiTabs-indicator': {
                   height: 3,
+                },
+                '& .MuiTabs-flexContainer': {
+                  justifyContent: 'center',
+                },
+                '& .MuiTab-root:hover': {
+                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                  transform: 'scale(1.05)',
+                  transition: 'all 0.2s ease-in-out',
                 },
               }}
             >
