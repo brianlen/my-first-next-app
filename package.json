@@ -8,7 +8,6 @@
     "build": "bun --bun next build",
     "start": "bun --bun next start",
     "lint": "bun run next lint",
-    "predeploy": "bun run build",
     "deploy": "bun run build && echo '' > out/.nojekyll && gh-pages -d out"
   },
   "dependencies": {
