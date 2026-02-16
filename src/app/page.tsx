@@ -22,8 +22,8 @@ import {
   Button,
   Paper,
   Link,
+  Grid,
 } from '@mui/material';
-import Grid from '@mui/material/Grid';
 // Import MUI Icons
 import PodcastsIcon from '@mui/icons-material/Podcasts';
 import WorkIcon from '@mui/icons-material/Work';
@@ -50,6 +50,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import CropSquareIcon from '@mui/icons-material/CropSquare';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import BedIcon from '@mui/icons-material/Bed';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 // Import custom ThemeToggle component
 import ThemeToggle from './components/ThemeToggle';
 // Import country flags (install with: bun install country-flag-icons)
@@ -1406,24 +1407,26 @@ function PodcastsSection() {
               rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
             >
-              <CardMedia
-                component="img"
-                height="200"
-                image={podcast.image}
-                alt={podcast.name}
-                sx={{ objectFit: 'cover' }}
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography variant="h6" gutterBottom>
-                  {podcast.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Host: {podcast.host}
-                </Typography>
-              </CardContent>
-              <CardActions>
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, p: 2 }}>
+                <CardMedia
+                  component="img"
+                  image={podcast.image}
+                  alt={podcast.name}
+                  sx={{ width: '80px', height: 'auto', flexShrink: 0, objectFit: 'cover', imageRendering: 'auto' }}
+                />
+                <Box sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" gutterBottom>
+                    {podcast.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {podcast.host}
+                  </Typography>
+                </Box>
+              </Box>
+              <CardActions sx={{ justifyContent: 'center' }}>
                 <Button
                   size="small"
+                  startIcon={<YouTubeIcon />}
                   endIcon={<OpenInNewIcon />}
                   fullWidth
                   sx={{ color: '#FF0000' }}
