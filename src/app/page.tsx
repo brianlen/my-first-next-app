@@ -133,27 +133,27 @@ const languages = [
 ];
 
 const marathons = [
-  { name: "2019 Los Angeles Marathon", year: 2019, time: "5:22:44" },
-  { name: "2019 Air Force Marathon", year: 2019, time: "5:21:33" },
-  { name: "2020 Air Force Marathon", year: 2020, time: "5:23:52" },
-  { name: "2021 Air Force Marathon", year: 2021, time: "5:23:03" },
-  { name: "2021 Marine Corps Marathon", year: 2021, time: "5:28:40" },
-  { name: "2021 Space Coast Marathon", year: 2021, time: "4:59:30" },
-  { name: "2022 Disney Marathon", year: 2022, time: "5:32:16" },
-  { name: "2022 Air Force Marathon", year: 2022, time: "5:54:07" },
-  { name: "2023 Air Force Marathon", year: 2023, time: "5:44:12" },
-  { name: "2023 Duke City Marathon", year: 2023, time: "5:16:05" },
-  { name: "2024 Denver Colfax Marathon", year: 2024, time: "5:55:32" },
-  { name: "2024 Air Force Marathon", year: 2024, time: "5:58:39" },
-  { name: "2024 Duke City Marathon", year: 2024, time: "5:23:59" },
-  { name: "2025 Mesa Marathon", year: 2025, time: "5:42:32" },
-  { name: "2025 Bataan Memorial Death March", year: 2025, time: "6:26:48" },
-  { name: "2025 Oklahoma City Memorial Marathon", year: 2025, time: "5:30:18" },
-  { name: "2025 Air Force Marathon", year: 2025, time: "6:39:56" },
-  { name: "2025 Duke City Marathon", year: 2025, time: "6:08:49" },
-  { name: "2025 Albuquerque Fiesta Marathon", year: 2025, time: "6:00:21" },
-  { name: "2026 Bataan Memorial Death March (35-lbs rucking)", year: 2026, time: "hh:mm:ss" },
-  { name: "2026 Albuquerque Marathon", year: 2026, time: "hh:mm:ss" }
+  { name: "Los Angeles Marathon", year: 2019, time: "5:22:44" },
+  { name: "Air Force Marathon", year: 2019, time: "5:21:33" },
+  { name: "Air Force Marathon", year: 2020, time: "5:23:52" },
+  { name: "Air Force Marathon", year: 2021, time: "5:23:03" },
+  { name: "Marine Corps Marathon", year: 2021, time: "5:28:40" },
+  { name: "Space Coast Marathon", year: 2021, time: "4:59:30" },
+  { name: "Disney Marathon", year: 2022, time: "5:32:16" },
+  { name: "Air Force Marathon", year: 2022, time: "5:54:07" },
+  { name: "Air Force Marathon", year: 2023, time: "5:44:12" },
+  { name: "Duke City Marathon", year: 2023, time: "5:16:05" },
+  { name: "Denver Colfax Marathon", year: 2024, time: "5:55:32" },
+  { name: "Air Force Marathon", year: 2024, time: "5:58:39" },
+  { name: "Duke City Marathon", year: 2024, time: "5:23:59" },
+  { name: "Mesa Marathon", year: 2025, time: "5:42:32" },
+  { name: "Bataan Memorial Death March", year: 2025, time: "6:26:48" },
+  { name: "Oklahoma City Memorial Marathon", year: 2025, time: "5:30:18" },
+  { name: "Air Force Marathon", year: 2025, time: "6:39:56" },
+  { name: "Duke City Marathon", year: 2025, time: "6:08:49" },
+  { name: "Albuquerque Fiesta Marathon", year: 2025, time: "6:00:21" },
+  { name: "Bataan Memorial Death March (35-lbs rucking)", year: 2026, time: "6:30:00" },
+  { name: "Albuquerque Marathon", year: 2026, time: "5:30:00" }
 ];
 
 const countriesVisited = [
@@ -602,10 +602,11 @@ function ResumeTab() {
 
 function MarathonSection() {
   const [sortBy, setSortBy] = useState<'none' | 'year' | 'name' | 'time'>('none');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
   const sortedMarathons = [...marathons].sort((a, b) => {
     if (sortBy === 'year') {
-      return a.year - b.year;
+      return sortDirection === 'asc' ? a.year - b.year : b.year - a.year;
     }
     if (sortBy === 'name') {
       return a.name.localeCompare(b.name);
@@ -700,8 +701,15 @@ function MarathonSection() {
             <TableRow>
               <TableCell>#</TableCell>
               <TableCell>
-                <Button onClick={() => setSortBy(sortBy === 'year' ? 'none' : 'year')}>
-                  Year
+                <Button onClick={() => {
+                  if (sortBy !== 'year') {
+                    setSortBy('year');
+                    setSortDirection('asc');
+                  } else {
+                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+                  }
+                }}>
+                  Year {sortDirection === 'desc' ? '↓' : '↑'}
                 </Button>
               </TableCell>
               <TableCell>
@@ -721,7 +729,7 @@ function MarathonSection() {
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{marathon.year}</TableCell>
-                <TableCell>{marathon.name.replace(/^\d{4}\s/, '')}</TableCell>
+                <TableCell>{marathon.name}</TableCell>
                 <TableCell>{marathon.time}</TableCell>
               </TableRow>
             ))}
