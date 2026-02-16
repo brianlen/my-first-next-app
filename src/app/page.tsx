@@ -24,6 +24,7 @@ import {
   Link,
   Grid,
 } from '@mui/material';
+
 // Import MUI Icons
 import PodcastsIcon from '@mui/icons-material/Podcasts';
 import WorkIcon from '@mui/icons-material/Work';
@@ -51,8 +52,11 @@ import CropSquareIcon from '@mui/icons-material/CropSquare';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import BedIcon from '@mui/icons-material/Bed';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-// Import custom ThemeToggle component
-import ThemeToggle from './components/ThemeToggle';
+import MedicationIcon from '@mui/icons-material/Medication';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import FastfoodIcon from '@mui/icons-material/Fastfood';
+
 // Import country flags (install with: bun install country-flag-icons)
 import US from 'country-flag-icons/react/3x2/US';
 import MX from 'country-flag-icons/react/3x2/MX';
@@ -64,6 +68,9 @@ import DE from 'country-flag-icons/react/3x2/DE';
 import ES from 'country-flag-icons/react/3x2/ES';
 import CA from 'country-flag-icons/react/3x2/CA';
 import GB from 'country-flag-icons/react/3x2/GB';
+
+// Import custom ThemeToggle component
+import ThemeToggle from './components/ThemeToggle';
 
 // ==================== DATA CONSTANTS ====================
 
@@ -553,6 +560,81 @@ const favoritePodcasts = [
     host: "Shawn Ryan",
     youtubeChannel: "https://youtube.com/@ShawnRyanShow",
     image: "https://yt3.googleusercontent.com/Q4QU_fme2fF3UHscjdJcS7_GvyRHN7JFeZqt70KfbwCH3vYTBcQGnicQmWryd6zztyzSq9T37w=s160-c-k-c0x00ffffff-no-rj"
+  }
+];
+
+const favoriteSupplements = [
+  {
+    name: "Caffeine + L-Theanine",
+    how: "Boosts alertness via adenosine blockade; L-Theanine promotes calm focus by increasing alpha waves and GABA",
+    when: "Morning with breakfast",
+    why: "Wake up your brain without jitters for better concentration during work or study"
+  },
+  {
+    name: "Lion's Mane Mushroom",
+    how: "Stimulates nerve growth factor (NGF) for neuron growth and branching",
+    when: "Morning with food",
+    why: "Grow new brain cell branches to boost memory, like fertilizing your neural garden"
+  },
+  {
+    name: "Ashwagandha",
+    how: "Lowers cortisol, enhances working memory and attention via adaptogenic effects",
+    when: "Evening with food",
+    why: "Cut stress to think clearer and remember better without burnout"
+  },
+  {
+    name: "Ginkgo Biloba",
+    how: "Improves cerebral blood flow, antioxidant protection, supports neurotransmitter activity",
+    when: "Morning with breakfast",
+    why: "Boost focus and memory by ramping up brain blood flow like opening highways"
+  },
+  {
+    name: "Creatine",
+    how: "Boosts brain ATP energy, acts as neurotransmitter buffer",
+    when: "Post-workout with carbs",
+    why: "Power up brain energy for quicker thinking, great for vegetarians"
+  },
+  {
+    name: "Vitamin D",
+    how: "Supports neuroprotection, calcium regulation, reduces inflammation in brain",
+    when: "Morning with fatty food for absorption",
+    why: "Prevent brain fog from deficiency, aids learning and mood"
+  },
+  {
+    name: "Whey Protein",
+    how: "Provides amino acids for BDNF production and neurotransmitter synthesis",
+    when: "Post-workout",
+    why: "Fuel brain growth factors for better focus and memory"
+  },
+  {
+    name: "Omega-3 Fish Oil",
+    how: "Supports brain cell membranes, reduces inflammation",
+    when: "With meals",
+    why: "Protect against decline with essential fats for sharp thinking"
+  },
+  {
+    name: "Liposomal NAD+",
+    how: "Boosts NAD+ for energy metabolism, DNA repair, sirtuin activation",
+    when: "Morning with food",
+    why: "Recharge aging cells for more energy and longevity"
+  },
+  {
+    name: "Nitric Oxide",
+    how: "Increases blood flow to brain via vasodilation, supports neuroplasticity",
+    when: "Post-workout or 30-60 min before focus tasks",
+    why: "Deliver more oxygen/nutrients to brain for better cognition"
+  },
+  {
+    name: "Multivitamin",
+    how: "Fills nutrient gaps for neurotransmitter synthesis, antioxidant support",
+    when: "Morning with breakfast",
+    why: "Cover basics to prevent cognitive dips from deficiencies"
+  },
+  {
+    name: "Magnesium",
+    how: "Supports synaptic function, reduces NMDA overexcitation, calms nerves",
+    when: "Evening for sleep",
+    why: "Relax brain overactivity for clearer thinking and rest"
   }
 ];
 
@@ -1510,6 +1592,62 @@ function HabitatSection() {
 }
 
 
+function SupplementsSection() {
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  const sortedSupplements = [...favoriteSupplements].sort((a, b) => {
+    if (sortDirection === 'asc') {
+      return a.when.localeCompare(b.when);
+    } else {
+      return b.when.localeCompare(a.when);
+    }
+  });
+
+  const handleSortToggle = () => {
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+  };
+
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <MedicationIcon /> Favorite Supplements
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell><strong>NAME</strong></TableCell>
+              <TableCell><strong>HOW</strong></TableCell>
+              <TableCell>
+                <Button onClick={handleSortToggle} variant="text" size="small">
+                  <strong>WHEN {sortDirection === 'asc' ? '↑' : '↓'}</strong>
+                </Button>
+              </TableCell>
+              <TableCell><strong>WHY</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedSupplements.map((supplement) => (
+              <TableRow key={supplement.name}>
+                <TableCell>{supplement.name}</TableCell>
+                <TableCell>{supplement.how}</TableCell>
+                <TableCell sx={{ display: 'table-cell' }}>
+                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 16 }} />}
+                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 16 }} />}
+                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 16 }} />}
+                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 16 }} />}
+                  {supplement.when}
+                </TableCell>
+                <TableCell>{supplement.why}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
+  );
+}
+
 function LifestyleTab() {
   return (
     <Box>
@@ -1517,6 +1655,7 @@ function LifestyleTab() {
       <SleepSection />
       <BreathingSection />
       <HabitatSection />
+      <SupplementsSection />
     </Box>
   );
 }
