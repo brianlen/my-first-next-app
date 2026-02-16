@@ -1833,13 +1833,13 @@ export default function Home() {
                 },
               }}
             >
-              <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
-              <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
-              <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
-              <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
-              <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
-              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
-              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
+              <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} tabIndex={0} />
+              <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} tabIndex={0} />
+              <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} tabIndex={0} />
+              <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} tabIndex={0} />
+              <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} tabIndex={0} />
+              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} tabIndex={0} />
+              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(6)} tabIndex={0} />
             </Tabs>
           </Box>
 
