@@ -1538,25 +1538,68 @@ function HabitatSection() {
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <HomeWorkIcon /> Habitat For Humanity
       </Typography>
-      <Card elevation={2} sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
-            Volunteer Work (2021-Present)
-          </Typography>
-          <Grid container spacing={2} sx={{ mt: 1 }}>
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Typography variant="body2" color="text.secondary">
-                Houses Built: <strong>3</strong>
+      <Grid container spacing={2}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+          <Card elevation={2}
+            sx={{
+              mb: 3,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
+            <CardContent>
+              <Typography variant="h4" align="center">
+                {new Date().getFullYear() - 2021}
               </Typography>
-            </Grid>
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Typography variant="body2" color="text.secondary">
-                Hours Volunteered: <strong>120+</strong>
+              <Typography variant="body2" color="text.secondary" align="center">
+                Years of volunteering since 2021
               </Typography>
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+          <Card elevation={2}
+            sx={{
+              mb: 3,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
+            <CardContent>
+              <Typography variant="h4" align="center">
+                {habitatHouses.length}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" align="center">
+                Houses built
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+          <Card elevation={2}
+            sx={{
+              mb: 3,
+              transition: 'transform 0.2s',
+              '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: 4
+              }
+            }}>
+            <CardContent>
+              <Typography variant="h4" align="center">
+                120+
+              </Typography>
+              <Typography variant="body2" color="text.secondary" align="center">
+                Hours volunteered
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
       <Grid container spacing={3}>
         {habitatHouses.map((house) => (
@@ -1631,10 +1674,10 @@ function SupplementsSection() {
               <TableRow key={supplement.what}>
                 <TableCell>{supplement.what}</TableCell>
                 <TableCell sx={{ display: 'table-cell' }}>
-                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 16, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 16, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 16, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 16, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
                   {supplement.when}
                 </TableCell>
                 <TableCell>{supplement.why}</TableCell>
