@@ -50,9 +50,9 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
     };
 
     // Prevent flash of wrong theme
-    if (!mounted) {
-        return null;
-    }
+    // if (!mounted) {
+    //   return null;
+    // }
 
     const theme = mode === 'light' ? lightTheme : darkTheme;
 
