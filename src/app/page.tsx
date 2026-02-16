@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   Container,
   Typography,
@@ -1305,11 +1306,15 @@ function BooksSection() {
               <TableRow key={book.title}>
                 <TableCell>{book.year}</TableCell>
                 <TableCell>
-                  <img
-                    src={book.cover}
-                    alt={book.title}
-                    style={{ width: '50px', height: 'auto', borderRadius: '4px' }}
-                  />
+                  <Box sx={{ width: '50px', position: 'relative' }}>
+                    <Image
+                      src={book.cover}
+                      alt={book.title}
+                      fill
+                      style={{ borderRadius: '4px', objectFit: 'cover' }}
+                      unoptimized
+                    />
+                  </Box>
                 </TableCell>
                 <TableCell>{book.title}</TableCell>
                 <TableCell>{book.author}</TableCell>
