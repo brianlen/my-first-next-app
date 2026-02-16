@@ -21,11 +21,10 @@ import {
   Tab,
   Button,
   Paper,
-  Collapse,
-  IconButton,
   Link,
 } from '@mui/material';
 import Grid from '@mui/material/Grid';
+// Import MUI Icons
 import PodcastsIcon from '@mui/icons-material/Podcasts';
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
@@ -48,15 +47,12 @@ import AirIcon from '@mui/icons-material/Air';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import CropSquareIcon from '@mui/icons-material/CropSquare';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import BedIcon from '@mui/icons-material/Bed';
+// Import custom ThemeToggle component
 import ThemeToggle from './components/ThemeToggle';
-// Import country flags (install with: npm install country-flag-icons)
+// Import country flags (install with: bun install country-flag-icons)
 import US from 'country-flag-icons/react/3x2/US';
 import MX from 'country-flag-icons/react/3x2/MX';
 import FR from 'country-flag-icons/react/3x2/FR';
@@ -522,40 +518,40 @@ const recommendations = [
 
 const favoritePodcasts = [
   {
-    name: "Andrew Huberman",
+    name: "HubermanLab",
     host: "Andrew Huberman",
     youtubeChannel: "https://youtube.com/@hubermanlab",
-    image: "/api/placeholder/300/200"
+    image: "https://yt3.googleusercontent.com/Y8lhyl8aHY42phxwoAwUqwLGDp-z8nmtj3Z7_JB-Oh4yIZ1OFYb-MlJRuz_oygqsYQU-VgGqiOM=s160-c-k-c0x00ffffff-no-rj"
   },
   {
-    name: "Steven Bartlett",
+    name: "The Diary Of A CEO",
     host: "Steven Bartlett",
-    youtubeChannel: "https://youtube.com/@stevenbartlett",
-    image: "/api/placeholder/300/200"
+    youtubeChannel: "https://youtube.com/@thediaryofaceo",
+    image: "https://yt3.googleusercontent.com/JHCZDz37bsTmwoE1o4LEodF5vhsHfk29kCEauDTFr27-7hHXsHHvvWGzcG77v32ERrkpfInkGQ=s160-c-k-c0x00ffffff-no-rj"
   },
   {
-    name: "Danny Jones",
+    name: "Danny Jones Podcast",
     host: "Danny Jones",
     youtubeChannel: "https://youtube.com/@dannyjones",
-    image: "/api/placeholder/300/200"
+    image: "https://yt3.googleusercontent.com/MPoSQZ2fQIjriliOlHNLkPO7TB2Os0qHRpooOiwzysxSb6gJW2BSwYr_jVwP8HuIOC6ep0ZK=s160-c-k-c0x00ffffff-no-rj"
   },
   {
-    name: "Lex Fridman",
+    name: "Lex Fridman Podcast",
     host: "Lex Fridman",
     youtubeChannel: "https://youtube.com/@lexfridman",
-    image: "/api/placeholder/300/200"
+    image: "https://yt3.googleusercontent.com/ytc/AIdro_ljfMy9kUR1PH9VRf-XsTsPqFMgORC_zodOQVEAm4hx36lC=s160-c-k-c0x00ffffff-no-rj"
   },
   {
     name: "Chris Williamson",
     host: "Chris Williamson",
-    youtubeChannel: "https://youtube.com/@chriswilliamson",
-    image: "/api/placeholder/300/200"
+    youtubeChannel: "https://youtube.com/@ChrisWillx",
+    image: "https://yt3.googleusercontent.com/ytc/AIdro_mmN30Y4ap7dtPfLw8Algolz_LGtHHpTJxa-qAw-MCQpdo=s160-c-k-c0x00ffffff-no-rj"
   },
   {
-    name: "Shawn Ryan",
+    name: "Shawn Ryan Show",
     host: "Shawn Ryan",
-    youtubeChannel: "https://youtube.com/@shawnryan",
-    image: "/api/placeholder/300/200"
+    youtubeChannel: "https://youtube.com/@ShawnRyanShow",
+    image: "https://yt3.googleusercontent.com/Q4QU_fme2fF3UHscjdJcS7_GvyRHN7JFeZqt70KfbwCH3vYTBcQGnicQmWryd6zztyzSq9T37w=s160-c-k-c0x00ffffff-no-rj"
   }
 ];
 
@@ -1430,6 +1426,7 @@ function PodcastsSection() {
                   size="small"
                   endIcon={<OpenInNewIcon />}
                   fullWidth
+                  sx={{ color: '#FF0000' }}
                 >
                   Watch on YouTube
                 </Button>
