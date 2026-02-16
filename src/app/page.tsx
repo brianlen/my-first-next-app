@@ -1332,6 +1332,76 @@ function BooksTab() {
   );
 }
 
+function PodcastsSection() {
+  return (
+    <Box sx={{ mb: 3 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <PodcastsIcon /> Podcasts Listened
+      </Typography>
+      <Grid container spacing={3}>
+        {favoritePodcasts.map((podcast) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
+            <Card
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                cursor: 'pointer',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+              component="a"
+              href={podcast.youtubeChannel}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, p: 2 }}>
+                <CardMedia
+                  component="img"
+                  image={podcast.image}
+                  alt={podcast.name}
+                  sx={{ width: '72px', height: 'auto', flexShrink: 0, objectFit: 'cover', imageRendering: 'auto' }}
+                />
+                <Box sx={{ flexGrow: 1 }}>
+                  <Typography variant="h6" gutterBottom>
+                    {podcast.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {podcast.host}
+                  </Typography>
+                </Box>
+              </Box>
+              <CardActions sx={{ justifyContent: 'center' }}>
+                <Button
+                  size="small"
+                  startIcon={<YouTubeIcon />}
+                  endIcon={<OpenInNewIcon />}
+                  fullWidth
+                  sx={{ color: '#FF0000' }}
+                >
+                  Watch on YouTube
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+}
+
+function PodcastsTab() {
+  return (
+    <Box>
+      <PodcastsSection />
+    </Box>
+  );
+}
+
 function NutritionSection() {
   return (
     <Box sx={{ mb: 4 }}>
@@ -1371,6 +1441,62 @@ function NutritionSection() {
           </Grid>
         ))}
       </Grid>
+    </Box>
+  );
+}
+
+function SupplementsSection() {
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  const sortedSupplements = [...favoriteSupplements].sort((a, b) => {
+    if (sortDirection === 'asc') {
+      return a.when.localeCompare(b.when);
+    } else {
+      return b.when.localeCompare(a.when);
+    }
+  });
+
+  const handleSortToggle = () => {
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+  };
+
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <MedicationIcon /> Favorite Supplements
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell><strong>WHAT</strong></TableCell>
+              <TableCell>
+                <Button onClick={handleSortToggle} variant="text" size="small">
+                  <strong>WHEN {sortDirection === 'asc' ? '↑' : '↓'}</strong>
+                </Button>
+              </TableCell>
+              <TableCell><strong>WHY</strong></TableCell>
+              <TableCell><strong>HOW</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedSupplements.map((supplement) => (
+              <TableRow key={supplement.what}>
+                <TableCell>{supplement.what}</TableCell>
+                <TableCell sx={{ display: 'table-cell' }}>
+                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when}
+                </TableCell>
+                <TableCell>{supplement.why}</TableCell>
+                <TableCell>{supplement.how}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 }
@@ -1458,76 +1584,6 @@ function BreathingSection() {
           </Grid>
         ))}
       </Grid>
-    </Box>
-  );
-}
-
-function PodcastsSection() {
-  return (
-    <Box sx={{ mb: 3 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <PodcastsIcon /> Podcasts Listened
-      </Typography>
-      <Grid container spacing={3}>
-        {favoritePodcasts.map((podcast) => (
-          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
-            <Card
-              sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                cursor: 'pointer',
-                transition: 'transform 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: 4
-                }
-              }}
-              component="a"
-              href={podcast.youtubeChannel}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ textDecoration: 'none' }}
-            >
-              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, p: 2 }}>
-                <CardMedia
-                  component="img"
-                  image={podcast.image}
-                  alt={podcast.name}
-                  sx={{ width: '72px', height: 'auto', flexShrink: 0, objectFit: 'cover', imageRendering: 'auto' }}
-                />
-                <Box sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" gutterBottom>
-                    {podcast.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {podcast.host}
-                  </Typography>
-                </Box>
-              </Box>
-              <CardActions sx={{ justifyContent: 'center' }}>
-                <Button
-                  size="small"
-                  startIcon={<YouTubeIcon />}
-                  endIcon={<OpenInNewIcon />}
-                  fullWidth
-                  sx={{ color: '#FF0000' }}
-                >
-                  Watch on YouTube
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
-  );
-}
-
-function PodcastsTab() {
-  return (
-    <Box>
-      <PodcastsSection />
     </Box>
   );
 }
@@ -1634,71 +1690,14 @@ function HabitatSection() {
   );
 }
 
-
-function SupplementsSection() {
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
-
-  const sortedSupplements = [...favoriteSupplements].sort((a, b) => {
-    if (sortDirection === 'asc') {
-      return a.when.localeCompare(b.when);
-    } else {
-      return b.when.localeCompare(a.when);
-    }
-  });
-
-  const handleSortToggle = () => {
-    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-  };
-
-  return (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <MedicationIcon /> Favorite Supplements
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell><strong>WHAT</strong></TableCell>
-              <TableCell>
-                <Button onClick={handleSortToggle} variant="text" size="small">
-                  <strong>WHEN {sortDirection === 'asc' ? '↑' : '↓'}</strong>
-                </Button>
-              </TableCell>
-              <TableCell><strong>WHY</strong></TableCell>
-              <TableCell><strong>HOW</strong></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedSupplements.map((supplement) => (
-              <TableRow key={supplement.what}>
-                <TableCell>{supplement.what}</TableCell>
-                <TableCell sx={{ display: 'table-cell' }}>
-                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when}
-                </TableCell>
-                <TableCell>{supplement.why}</TableCell>
-                <TableCell>{supplement.how}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
-  );
-}
-
 function LifestyleTab() {
   return (
     <Box>
       <NutritionSection />
+      <SupplementsSection />
       <SleepSection />
       <BreathingSection />
       <HabitatSection />
-      <SupplementsSection />
     </Box>
   );
 }
