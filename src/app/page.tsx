@@ -1001,7 +1001,7 @@ function MarathonSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  Year {sortDirection === 'desc' ? '↓' : '↑'}
+                  Year {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
                 </Button>
               </TableCell>
               <TableCell>
