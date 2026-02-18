@@ -200,22 +200,82 @@ const placesLived = [
 ];
 
 const citiesVisited = [
-  { id: 1, city: "Tokyo", country: "Japan", lat: 35.6762, lng: 139.6503 },
-  { id: 2, city: "Osaka", country: "Japan", lat: 34.6937, lng: 135.5023 },
-  { id: 3, city: "Kyoto", country: "Japan", lat: 35.0116, lng: 135.7681 },
-  { id: 4, city: "Hiroshima", country: "Japan", lat: 34.3853, lng: 132.4553 },
-  { id: 5, city: "Berlin", country: "Germany", lat: 52.5200, lng: 13.4050 },
-  { id: 6, city: "Munich", country: "Germany", lat: 48.1351, lng: 11.5820 },
-  { id: 7, city: "Barcelona", country: "Spain", lat: 41.3851, lng: 2.1734 },
-  { id: 8, city: "Madrid", country: "Spain", lat: 40.4168, lng: -3.7038 },
-  { id: 9, city: "Toronto", country: "Canada", lat: 43.6532, lng: -79.3832 },
-  { id: 10, city: "Montreal", country: "Canada", lat: 45.5017, lng: -73.5673 },
-  { id: 11, city: "London", country: "United Kingdom", lat: 51.5074, lng: -0.1278 },
-  { id: 12, city: "Paris", country: "France", lat: 48.8566, lng: 2.3522 },
-  { id: 13, city: "Seoul", country: "South Korea", lat: 37.5665, lng: 126.9780 },
-  { id: 14, city: "Busan", country: "South Korea", lat: 35.1796, lng: 129.0756 },
-  { id: 15, city: "Ho Chi Minh City", country: "Vietnam", lat: 10.8231, lng: 106.6297 },
-  { id: 16, city: "Hanoi", country: "Vietnam", lat: 21.0285, lng: 105.8542 },
+  // { id: 1, city: "Los Angeles", country: "USA", year: "1992–2010", lat: 34.0522, lng: -118.2437 },
+  { id: 2, city: "Las Vegas", country: "USA", year: "2018", lat: 36.1699, lng: -115.1398 },
+  // { id: 3, city: "Ann Arbor", country: "USA", year: "2010–2015", lat: 42.2808, lng: -83.7430 },
+  { id: 4, city: "Detroit", country: "USA", year: "2013", lat: 42.3314, lng: -83.0458 },
+  { id: 5, city: "Orlando", country: "USA", year: "2013", lat: 28.5383, lng: -81.3792 },
+  // { id: 6, city: "Cape Canaveral", country: "USA", year: "2013", lat: 28.3922, lng: -80.6077 },
+  { id: 7, city: "Montgomery", country: "USA", year: "2016", lat: 32.3668, lng: -86.2999 },
+  { id: 8, city: "Denver", country: "USA", year: "2016", lat: 39.7392, lng: -104.9903 },
+  { id: 9, city: "Newark", country: "USA", year: "2016", lat: 40.7357, lng: -74.1724 },
+  { id: 10, city: "Manhattan", country: "USA", year: "2016", lat: 40.7831, lng: -73.9712 },
+  { id: 11, city: "Boston", country: "USA", year: "2017", lat: 42.3601, lng: -71.0589 },
+  { id: 12, city: "Clearwater", country: "USA", year: "2017", lat: 27.9659, lng: -82.8001 },
+  { id: 13, city: "Miami", country: "USA", year: "2017", lat: 25.7617, lng: -80.1918 },
+  { id: 14, city: "Tokyo", country: "Japan", year: "2018", lat: 35.6762, lng: 139.6503 },
+  { id: 15, city: "Osaka", country: "Japan", year: "2018", lat: 34.6937, lng: 135.5023 },
+  { id: 16, city: "Kyoto", country: "Japan", year: "2018", lat: 35.0116, lng: 135.7681 },
+  { id: 17, city: "Hiroshima", country: "Japan", year: "2018", lat: 34.3853, lng: 132.4553 },
+  { id: 18, city: "Washington DC", country: "USA", year: "2018", lat: 38.9072, lng: -77.0369 },
+  { id: 19, city: "Phoenix", country: "USA", year: "2018", lat: 33.4484, lng: -112.0740 },
+  { id: 20, city: "San Diego", country: "USA", year: "2019", lat: 32.7157, lng: -117.1611 },
+  { id: 21, city: "San Francisco", country: "USA", year: "2019", lat: 37.7749, lng: -122.4194 },
+  { id: 22, city: "Berlin", country: "Germany", year: "2019", lat: 52.5200, lng: 13.4050 },
+  { id: 23, city: "Munich", country: "Germany", year: "2019", lat: 48.1351, lng: 11.5820 },
+  { id: 24, city: "Barcelona", country: "Spain", year: "2019", lat: 41.3851, lng: 2.1734 },
+  { id: 25, city: "Madrid", country: "Spain", year: "2019", lat: 40.4168, lng: -3.7038 },
+  { id: 26, city: "Yosemite", country: "USA", year: "2019", lat: 37.8651, lng: -119.5383 },
+  { id: 27, city: "Portland", country: "USA", year: "2019", lat: 45.5051, lng: -122.6750 },
+  { id: 28, city: "Seattle", country: "USA", year: "2019", lat: 47.6062, lng: -122.3321 },
+  { id: 29, city: "Yellowstone", country: "USA", year: "2019", lat: 44.4280, lng: -110.5885 },
+  { id: 30, city: "Mt Rushmore", country: "USA", year: "2019", lat: 43.8791, lng: -103.4591 },
+  { id: 31, city: "Minneapolis", country: "USA", year: "2019", lat: 44.9778, lng: -93.2650 },
+  { id: 32, city: "Milwaukee", country: "USA", year: "2019", lat: 43.0389, lng: -87.9065 },
+  { id: 33, city: "Chicago", country: "USA", year: "2019", lat: 41.8781, lng: -87.6298 },
+  { id: 34, city: "Cleveland", country: "USA", year: "2019", lat: 41.4993, lng: -81.6944 },
+  { id: 35, city: "Columbus", country: "USA", year: "2019", lat: 39.9612, lng: -82.9988 },
+  // { id: 36, city: "Dayton", country: "USA", year: "2021", lat: 39.7589, lng: -84.1916 },
+  { id: 37, city: "Cincinnati", country: "USA", year: "2021", lat: 39.1031, lng: -84.5120 },
+  { id: 38, city: "Indianapolis", country: "USA", year: "2021", lat: 39.7684, lng: -86.1581 },
+  { id: 39, city: "Pensacola", country: "USA", year: "2021", lat: 30.4213, lng: -87.2169 },
+  { id: 40, city: "New Orleans", country: "USA", year: "2021", lat: 29.9511, lng: -90.0715 },
+  { id: 41, city: "Dallas", country: "USA", year: "2021", lat: 32.7767, lng: -96.7970 },
+  { id: 42, city: "Fort Worth", country: "USA", year: "2021", lat: 32.7555, lng: -97.3308 },
+  { id: 43, city: "Niagara Falls", country: "USA/Canada", year: "2022", lat: 43.0962, lng: -79.0377 },
+  { id: 44, city: "Toronto", country: "Canada", year: "2022", lat: 43.6532, lng: -79.3832 },
+  { id: 45, city: "Ottawa", country: "Canada", year: "2022", lat: 45.4215, lng: -75.6972 },
+  { id: 46, city: "Montreal", country: "Canada", year: "2022", lat: 45.5017, lng: -73.5673 },
+  { id: 47, city: "Quebec City", country: "Canada", year: "2022", lat: 46.8139, lng: -71.2080 },
+  { id: 48, city: "Pittsburgh", country: "USA", year: "2022", lat: 40.4406, lng: -79.9959 },
+  { id: 49, city: "Baltimore", country: "USA", year: "2022", lat: 39.2904, lng: -76.6122 },
+  { id: 50, city: "Philadelphia", country: "USA", year: "2022", lat: 39.9526, lng: -75.1652 },
+  { id: 51, city: "New York", country: "USA", year: "2022", lat: 40.7128, lng: -74.0060 },
+  // { id: 52, city: "Albuquerque", country: "USA", year: "2023", lat: 35.0844, lng: -106.6504 },
+  { id: 53, city: "Seward", country: "USA", year: "2023", lat: 60.1042, lng: -149.4418 },
+  { id: 54, city: "Anchorage", country: "USA", year: "2023", lat: 61.2181, lng: -149.9003 },
+  { id: 55, city: "El Paso", country: "USA", year: "2023", lat: 31.7619, lng: -106.4850 },
+  { id: 56, city: "Grand Canyon", country: "USA", year: "2023", lat: 36.0544, lng: -112.1401 },
+  { id: 57, city: "London", country: "United Kingdom", year: "2023", lat: 51.5074, lng: -0.1278 },
+  { id: 58, city: "Paris", country: "France", year: "2024", lat: 48.8566, lng: 2.3522 },
+  { id: 59, city: "Colorado Springs", country: "USA", year: "2024", lat: 38.8339, lng: -104.8214 },
+  { id: 60, city: "Oklahoma City", country: "USA", year: "2024", lat: 35.4676, lng: -97.5164 },
+  { id: 61, city: "Tulsa", country: "USA", year: "2024", lat: 36.1540, lng: -95.9928 },
+  { id: 62, city: "Little Rock", country: "USA", year: "2024", lat: 34.7465, lng: -92.2896 },
+  { id: 63, city: "Memphis", country: "USA", year: "2024", lat: 35.1495, lng: -90.0490 },
+  { id: 64, city: "Huntsville", country: "USA", year: "2024", lat: 34.7304, lng: -86.5861 },
+  { id: 65, city: "Nashville", country: "USA", year: "2024", lat: 36.1627, lng: -86.7816 },
+  { id: 66, city: "Louisville", country: "USA", year: "2024", lat: 38.2527, lng: -85.7585 },
+  { id: 67, city: "St Louis", country: "USA", year: "2024", lat: 38.6270, lng: -90.1994 },
+  { id: 68, city: "Kansas City", country: "USA", year: "2024", lat: 39.0997, lng: -94.5786 },
+  { id: 69, city: "Seoul", country: "South Korea", year: "2024", lat: 37.5665, lng: 126.9780 },
+  { id: 70, city: "Busan", country: "South Korea", year: "2025", lat: 35.1796, lng: 129.0756 },
+  { id: 71, city: "Syracuse", country: "USA", year: "2025", lat: 43.0481, lng: -76.1474 },
+  { id: 72, city: "Rome", country: "USA", year: "2025", lat: 43.2128, lng: -75.4557 },
+  { id: 73, city: "Avon Park", country: "USA", year: "2025", lat: 27.5964, lng: -81.5059 },
+  { id: 74, city: "Tampa", country: "USA", year: "2025", lat: 27.9506, lng: -82.4572 },
+  { id: 75, city: "Ho Chi Minh City", country: "Vietnam", year: "2025", lat: 10.8231, lng: 106.6297 },
+  { id: 76, city: "Hanoi", country: "Vietnam", year: "2026", lat: 21.0285, lng: 105.8542 },
 ];
 
 const countriesVisited = [
@@ -483,7 +543,7 @@ const booksRead = [
 
 
 
-const nutritionRankings = [
+const nutritionalFood = [
   {
     meal: "Oatmeal Bowl",
     ingredients: ["Steel-cut oats", "Blueberries", "Almonds", "Honey", "Cinnamon"],
@@ -1553,10 +1613,10 @@ function NutritionSection() {
   return (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <RestaurantIcon /> Nutrition Rankings
+        <RestaurantIcon /> Nutritional Food
       </Typography>
       <Grid container spacing={3}>
-        {nutritionRankings.map((item) => (
+        {nutritionalFood.map((item) => (
           <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.meal}>
             <Card elevation={3}
               sx={{
