@@ -1,4 +1,5 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, { useState } from 'react';
 import {
   Container,
@@ -56,6 +57,8 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
+import HomeIcon from '@mui/icons-material/Home';
+import FlightIcon from '@mui/icons-material/Flight';
 
 // Import country flags (install with: bun install country-flag-icons)
 import US from 'country-flag-icons/react/3x2/US';
@@ -71,6 +74,7 @@ import GB from 'country-flag-icons/react/3x2/GB';
 
 // Import custom ThemeToggle component
 import ThemeToggle from './components/ThemeToggle';
+import TravelMap from './components/TravelMap';
 
 // ==================== DATA CONSTANTS ====================
 
@@ -1158,6 +1162,24 @@ function MarathonSection() {
   );
 }
 
+function PlacedLivedAndCitiesVisitedSection() {
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <PublicIcon /> Places Lived & Cities Visited
+      </Typography>
+
+      {/* Legend */}
+      <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
+        <Chip icon={<HomeIcon />} label="Places Lived" color="error" size="small" />
+        <Chip icon={<FlightIcon />} label="Cities Visited" color="primary" size="small" />
+      </Box>
+
+      <TravelMap placesLived={placesLived} citiesVisited={citiesVisited} />
+    </Box>
+  )
+}
+
 function CountriesSection() {
   return (
     <Box sx={{ mb: 4 }}>
@@ -1231,9 +1253,19 @@ function AppalachianTrailSection() {
 }
 
 function TravelTab() {
+  const TravelMap = dynamic(() => import("./components/TravelMap"), {
+    ssr: false,
+    loading: () => (
+      <Box sx={{ height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Typography color="text.secondary">Loading map...</Typography>
+      </Box>
+    ),
+  });
+
   return (
     <Box>
       <MarathonSection />
+      <PlacedLivedAndCitiesVisitedSection />
       <CountriesSection />
       <AppalachianTrailSection />
     </Box>
