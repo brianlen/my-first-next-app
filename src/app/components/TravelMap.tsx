@@ -1,13 +1,11 @@
 ﻿"use client";
 import { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { Typography, Chip, Box } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import FlightIcon from "@mui/icons-material/Flight";
-import "../leafletIconFix"; // applies the icon fix + imports CSS
+import { Typography, Box } from "@mui/material";
 
 // Custom colored icons for lived vs visited
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const livedIcon = new L.Icon({
     iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
@@ -38,6 +36,16 @@ interface TravelMapProps {
 }
 
 export default function TravelMap({ placesLived, citiesVisited }: TravelMapProps) {
+    useEffect(() => {
+        // Fix Leaflet's broken marker icons in webpack
+        delete (L.Icon.Default.prototype as any)._getIconUrl;
+        L.Icon.Default.mergeOptions({
+            iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+            iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+            shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+        });
+    }, []);
+
     return (
         <MapContainer
             center={[30, 10]}
