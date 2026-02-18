@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Container,
@@ -1365,6 +1365,7 @@ function BooksSection() {
                 <TableCell>{book.year}</TableCell>
                 <TableCell>
                   <Box sx={{ width: '50px', height: '70px', display: 'flex', alignItems: 'center' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={book.cover}
                       alt={book.title}
@@ -1849,7 +1850,7 @@ function RecommendationsTab() {
 
 // ==================== MAIN COMPONENT ====================
 
-export default function Home() {
+function Home() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState(0);
@@ -1940,5 +1941,13 @@ export default function Home() {
         </Card>
       </Container>
     </Box>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home />
+    </Suspense>
   );
 }
