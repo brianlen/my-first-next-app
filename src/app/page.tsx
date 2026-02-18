@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Container,
   Typography,
@@ -455,17 +455,57 @@ const nutritionRankings = [
 
 const habitatHouses = [
   {
-    address: "1234 Mountain View Dr, Albuquerque, NM",
+    address: "1176 June Dr, Xenia, OH 45385",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400"
   },
   {
-    address: "5678 Desert Bloom Ave, Albuquerque, NM",
+    address: "2026 Ewalt Ave, Dayton, OH 45420",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400"
+  },
+  {
+    address: "126 Prugh Ave, Xenia, OH 45385",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400"
+  },
+  {
+    address: "864 Foley Dr, Vandalia, OH 45377",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400"
+  },
+  {
+    address: "6380 Shull Rd, Huber Heights, OH 45424",
     image: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=400"
   },
   {
-    address: "9101 Sandia Heights Rd, Albuquerque, NM",
+    address: "6724 Sandy Dr, Dayton, OH 45426",
     image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
-  }
+  },
+  {
+    address: "1106 S Bell Ave, Springfield, OH 45506",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
+  {
+    address: "1122 W Perrin Ave, Springfield, OH 45506",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
+  {
+    address: "100 Clifton Ave SE, Albuquerque, NM 87102",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
+  {
+    address: "104 Clifton Ave SE, Albuquerque, NM 87102",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
+  {
+    address: "108 Clifton Ave SE, Albuquerque, NM 87102",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
+  {
+    address: "112 Clifton Ave SE, Albuquerque, NM 87102",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
+  {
+    address: "116 Clifton Ave SE, Albuquerque, NM 87102",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"
+  },
 ];
 
 const breathingTechniques = [
@@ -636,7 +676,25 @@ const favoriteSupplements = [
     how: "Supports synaptic function, reduces NMDA overexcitation, calms nerves",
     when: "Evening for sleep",
     why: "Relax brain overactivity for clearer thinking and rest"
-  }
+  },
+  {
+    what: "Korean Panax Ginseng",
+    how: "Active ginsenosides boost cerebral blood flow, protect neurons from oxidative damage, and support neurotransmitter balance",
+    when: "Morning with food",
+    why: "Sharpen mental energy and slow brain aging like a daily tune-up for your neurons"
+  },
+  {
+    what: "5-HTP",
+    how: "Direct serotonin precursor that raises brain serotonin levels; converts to melatonin at night",
+    when: "Evening before bed for sleep",
+    why: "Give your brain the raw material for its feel-good chemical to lift mood and ease anxiety"
+  },
+  {
+    what: "St. John's Wort",
+    how: "Slows reabsorption of serotonin, dopamine, and norepinephrine, keeping mood-lifting chemicals active longer",
+    when: "Morning with food; effects build over 2-4 weeks",
+    why: "Natural mood support that keeps your brain's happiness chemicals from fading too fast"
+  },
 ];
 
 // ==================== TAB PANEL COMPONENT ====================
@@ -1306,13 +1364,11 @@ function BooksSection() {
               <TableRow key={book.title}>
                 <TableCell>{book.year}</TableCell>
                 <TableCell>
-                  <Box sx={{ width: '50px', position: 'relative' }}>
-                    <Image
+                  <Box sx={{ width: '50px', height: '70px', display: 'flex', alignItems: 'center' }}>
+                    <img
                       src={book.cover}
                       alt={book.title}
-                      fill
-                      style={{ borderRadius: '4px', objectFit: 'cover' }}
-                      unoptimized
+                      style={{ width: '100%', height: '100%', borderRadius: '4px', objectFit: 'cover' }}
                     />
                   </Box>
                 </TableCell>
@@ -1794,10 +1850,27 @@ function RecommendationsTab() {
 // ==================== MAIN COMPONENT ====================
 
 export default function Home() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState(0);
+
+  // Initialize tab from URL params
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam) {
+      const tabIndex = parseInt(tabParam, 10);
+      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex <= 6) {
+        setActiveTab(tabIndex);
+      }
+    }
+  }, [searchParams]);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
+    // Update URL without causing a page reload
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('tab', newValue.toString());
+    router.replace(`?${newSearchParams.toString()}`, { scroll: false });
   };
 
   return (
