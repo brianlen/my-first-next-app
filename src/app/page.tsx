@@ -1222,7 +1222,7 @@ function MarathonSection() {
 }
 
 function PlacedLivedAndCitiesVisitedSection() {
-  const TravelMapComponent = dynamic(() => import("./components/TravelMap"), {
+  const TravelMap = dynamic(() => import("./components/TravelMap"), {
     ssr: false,
     loading: () => (
       <Box sx={{ height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -1243,7 +1243,7 @@ function PlacedLivedAndCitiesVisitedSection() {
         <Chip icon={<FlightIcon />} label="Cities Visited" color="primary" size="small" />
       </Box>
 
-      <TravelMapComponent placesLived={placesLived} citiesVisited={citiesVisited} />
+      <TravelMap placesLived={placesLived} citiesVisited={citiesVisited} />
     </Box>
   )
 }
