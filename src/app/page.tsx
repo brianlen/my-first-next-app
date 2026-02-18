@@ -1,6 +1,5 @@
 "use client";
-import React, { useState, useEffect, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -1850,28 +1849,11 @@ function RecommendationsTab() {
 
 // ==================== MAIN COMPONENT ====================
 
-function Home() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
-
-  // Initialize tab from URL params
-  useEffect(() => {
-    const tabParam = searchParams.get('tab');
-    if (tabParam) {
-      const tabIndex = parseInt(tabParam, 10);
-      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex <= 6) {
-        setActiveTab(tabIndex);
-      }
-    }
-  }, [searchParams]);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
-    // Update URL without causing a page reload
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-    newSearchParams.set('tab', newValue.toString());
-    router.replace(`?${newSearchParams.toString()}`, { scroll: false });
   };
 
   return (
@@ -1892,28 +1874,24 @@ function Home() {
               onChange={handleTabChange}
               aria-label="portfolio tabs"
               variant="scrollable"
-              scrollButtons={false}
+              scrollButtons="auto"
               sx={{
                 '.MuiTabs-indicator': {
                   height: 3,
                 },
-                '& .MuiTabs-flexContainer': {
-                  justifyContent: 'center',
-                },
                 '& .MuiTab-root:hover': {
                   backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                  transform: 'scale(1.05)',
-                  transition: 'all 0.2s ease-in-out',
+                  transition: 'background-color 0.2s ease-in-out',
                 },
               }}
             >
-              <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} tabIndex={0} />
-              <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} tabIndex={0} />
-              <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} tabIndex={0} />
-              <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} tabIndex={0} />
-              <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} tabIndex={0} />
-              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} tabIndex={0} />
-              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(6)} tabIndex={0} />
+              <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
+              <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
+              <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
+              <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
+              <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
+              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
+              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
             </Tabs>
           </Box>
 
@@ -1941,13 +1919,5 @@ function Home() {
         </Card>
       </Container>
     </Box>
-  );
-}
-
-export default function Page() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Home />
-    </Suspense>
   );
 }
