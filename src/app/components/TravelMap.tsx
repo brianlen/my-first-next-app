@@ -1,6 +1,6 @@
 ﻿"use client";
 import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Typography, Box } from "@mui/material";
 
 // Custom colored icons for lived vs visited
