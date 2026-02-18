@@ -74,7 +74,6 @@ import GB from 'country-flag-icons/react/3x2/GB';
 
 // Import custom ThemeToggle component
 import ThemeToggle from './components/ThemeToggle';
-import TravelMap from './components/TravelMap';
 
 // ==================== DATA CONSTANTS ====================
 
@@ -1223,6 +1222,15 @@ function MarathonSection() {
 }
 
 function PlacedLivedAndCitiesVisitedSection() {
+  const TravelMap = dynamic(() => import("./components/TravelMap"), {
+    ssr: false,
+    loading: () => (
+      <Box sx={{ height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Typography color="text.secondary">Loading map...</Typography>
+      </Box>
+    ),
+  });
+
   return (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -1313,15 +1321,6 @@ function AppalachianTrailSection() {
 }
 
 function TravelTab() {
-  const TravelMap = dynamic(() => import("./components/TravelMap"), {
-    ssr: false,
-    loading: () => (
-      <Box sx={{ height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Typography color="text.secondary">Loading map...</Typography>
-      </Box>
-    ),
-  });
-
   return (
     <Box>
       <MarathonSection />
