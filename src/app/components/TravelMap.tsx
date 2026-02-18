@@ -38,8 +38,8 @@ interface TravelMapProps {
 export default function TravelMap({ placesLived, citiesVisited }: TravelMapProps) {
     useEffect(() => {
         // Fix Leaflet's broken marker icons in webpack
-        delete (L.Icon.Default.prototype as any)._getIconUrl;
-        L.Icon.Default.mergeOptions({
+        const DefaultIcon = L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: unknown };
+        delete DefaultIcon._getIconUrl; L.Icon.Default.mergeOptions({
             iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
             iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
             shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
