@@ -160,6 +160,60 @@ const marathons = [
   { name: "Albuquerque Marathon", year: 2026, time: "5:30:00" }
 ];
 
+const placesLived = [
+  {
+    id: 1,
+    city: "Ann Arbor, MI",
+    description: "University of Michigan — BS Aerospace Engineering",
+    years: "2011–2015",
+    lat: 42.2808,
+    lng: -83.7430,
+  },
+  {
+    id: 2,
+    city: "El Segundo, CA",
+    description: "Los Angeles AFB — USAF Project Manager",
+    years: "2016–2019",
+    lat: 33.9192,
+    lng: -118.4165,
+  },
+  {
+    id: 3,
+    city: "Dayton, OH",
+    description: "Wright-Patterson AFB — USSF Analyst & AFIT MSEE",
+    years: "2019–2023",
+    lat: 39.7589,
+    lng: -84.1916,
+  },
+  {
+    id: 4,
+    city: "Albuquerque, NM",
+    description: "Kirtland AFB — USSF Engineer",
+    years: "2023–2026",
+    lat: 35.0844,
+    lng: -106.6504,
+  },
+];
+
+const citiesVisited = [
+  { id: 1, city: "Tokyo", country: "Japan", lat: 35.6762, lng: 139.6503 },
+  { id: 2, city: "Osaka", country: "Japan", lat: 34.6937, lng: 135.5023 },
+  { id: 3, city: "Kyoto", country: "Japan", lat: 35.0116, lng: 135.7681 },
+  { id: 4, city: "Hiroshima", country: "Japan", lat: 34.3853, lng: 132.4553 },
+  { id: 5, city: "Berlin", country: "Germany", lat: 52.5200, lng: 13.4050 },
+  { id: 6, city: "Munich", country: "Germany", lat: 48.1351, lng: 11.5820 },
+  { id: 7, city: "Barcelona", country: "Spain", lat: 41.3851, lng: 2.1734 },
+  { id: 8, city: "Madrid", country: "Spain", lat: 40.4168, lng: -3.7038 },
+  { id: 9, city: "Toronto", country: "Canada", lat: 43.6532, lng: -79.3832 },
+  { id: 10, city: "Montreal", country: "Canada", lat: 45.5017, lng: -73.5673 },
+  { id: 11, city: "London", country: "United Kingdom", lat: 51.5074, lng: -0.1278 },
+  { id: 12, city: "Paris", country: "France", lat: 48.8566, lng: 2.3522 },
+  { id: 13, city: "Seoul", country: "South Korea", lat: 37.5665, lng: 126.9780 },
+  { id: 14, city: "Busan", country: "South Korea", lat: 35.1796, lng: 129.0756 },
+  { id: 15, city: "Ho Chi Minh City", country: "Vietnam", lat: 10.8231, lng: 106.6297 },
+  { id: 16, city: "Hanoi", country: "Vietnam", lat: 21.0285, lng: 105.8542 },
+];
+
 const countriesVisited = [
   { country: "Japan", year: 2018, flag: JP, cities: ["Tokyo", "Osaka", "Kyoto", "Hiroshima"] },
   { country: "Germany", year: 2019, flag: DE, cities: ["Berlin", "Munich"] },
@@ -572,7 +626,7 @@ const favoritePodcasts = [
     image: "https://yt3.googleusercontent.com/Y8lhyl8aHY42phxwoAwUqwLGDp-z8nmtj3Z7_JB-Oh4yIZ1OFYb-MlJRuz_oygqsYQU-VgGqiOM=s160-c-k-c0x00ffffff-no-rj"
   },
   {
-    name: "The Diary Of A CEO",
+    name: "The Diary of a CEO",
     host: "Steven Bartlett",
     youtubeChannel: "https://youtube.com/@thediaryofaceo",
     image: "https://yt3.googleusercontent.com/JHCZDz37bsTmwoE1o4LEodF5vhsHfk29kCEauDTFr27-7hHXsHHvvWGzcG77v32ERrkpfInkGQ=s160-c-k-c0x00ffffff-no-rj"
