@@ -1914,10 +1914,10 @@ function TopPicksTab() {
   return (
     <Box>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <ShoppingCartIcon /> Product Recommendations
+        <ShoppingCartIcon /> Top Picks
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-        These are products I personally use and recommend. Quality tested through real-world use.
+        These are products I personally use and recommend.
       </Typography>
 
       <Grid container spacing={3}>
