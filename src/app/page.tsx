@@ -167,32 +167,40 @@ const placesLived = [
   {
     id: 1,
     city: "Ann Arbor, MI",
-    description: "University of Michigan — BS Aerospace Engineering",
-    years: "2011–2015",
+    description: "University of Michigan",
+    years: "2011-2015",
     lat: 42.2808,
     lng: -83.7430,
   },
   {
     id: 2,
+    city: "Cocoa Beach, FL",
+    description: "NASA Kennedy Space Center",
+    years: "2013",
+    lat: 28.3200,
+    lng: -80.6076,
+  },
+  {
+    id: 3,
     city: "El Segundo, CA",
-    description: "Los Angeles AFB — USAF Project Manager",
-    years: "2016–2019",
+    description: "Los Angeles AFB",
+    years: "2016-2019",
     lat: 33.9192,
     lng: -118.4165,
   },
   {
-    id: 3,
+    id: 4,
     city: "Dayton, OH",
-    description: "Wright-Patterson AFB — USSF Analyst & AFIT MSEE",
-    years: "2019–2023",
+    description: "Wright-Patterson AFB",
+    years: "2019-2023",
     lat: 39.7589,
     lng: -84.1916,
   },
   {
-    id: 4,
+    id: 5,
     city: "Albuquerque, NM",
-    description: "Kirtland AFB — USSF Engineer",
-    years: "2023–2026",
+    description: "Kirtland AFB",
+    years: "2023-2026",
     lat: 35.0844,
     lng: -106.6504,
   },
@@ -802,7 +810,7 @@ const favoriteSupplements = [
   {
     what: "5-HTP",
     how: "Direct serotonin precursor that raises brain serotonin levels; converts to melatonin at night",
-    when: "Evening before bed for sleep",
+    when: "Evening for sleep",
     why: "Give your brain the raw material for its feel-good chemical to lift mood and ease anxiety"
   },
   {
@@ -856,7 +864,7 @@ function HeaderSection() {
           Space Systems Engineer & Research Analyst
         </Typography>
         <Typography variant="body1" paragraph align="center" sx={{ mt: 2 }}>
-          Experienced space systems engineer and research analyst with a proven track record in
+          Experienced space systems engineer and research analyst with a background in
           satellite technology, software development, and strategic space operations. Skilled in
           project management, cross-functional team leadership, and technical intelligence analysis.
         </Typography>
@@ -1331,11 +1339,11 @@ function TravelTab() {
   );
 }
 
-// ==================== LIFESTYLE TAB COMPONENTS ====================
+// ==================== MOVIES TAB COMPONENT ====================
 
 function MoviesSection() {
-  const [sortBy, setSortBy] = useState<'year' | 'title' | 'genre' | 'none'>('none');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [sortBy, setSortBy] = useState<'year' | 'title' | 'genre' | 'none'>('year');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
   const sortedMovies = [...moviesWatched].sort((a, b) => {
     if (sortBy === 'year') {
@@ -1423,8 +1431,8 @@ function MoviesTab() {
 }
 
 function BooksSection() {
-  const [sortBy, setSortBy] = useState<'year' | 'title' | 'author' | 'genre' | 'none'>('none');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [sortBy, setSortBy] = useState<'year' | 'title' | 'author' | 'genre' | 'none'>('year');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
   const sortedBooks = [...booksRead].sort((a, b) => {
     if (sortBy === 'year') {
@@ -1570,7 +1578,7 @@ function PodcastsSection() {
                   component="img"
                   image={podcast.image}
                   alt={podcast.name}
-                  sx={{ width: '72px', height: 'auto', flexShrink: 0, objectFit: 'cover', imageRendering: 'auto' }}
+                  sx={{ width: '64px', height: 'auto', flexShrink: 0, objectFit: 'cover', imageRendering: 'auto' }}
                 />
                 <Box sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" gutterBottom>
@@ -1607,6 +1615,8 @@ function PodcastsTab() {
     </Box>
   );
 }
+
+// ==================== LIFESTYLE TAB COMPONENTS ====================
 
 function NutritionSection() {
   return (
@@ -1939,7 +1949,7 @@ function TopPicksTab() {
                 height="150"
                 image={product.image}
                 alt={product.name}
-                sx={{ objectFit: 'contain' }}
+                sx={{ objectFit: 'contain', backgroundColor: 'white' }}
               />
               <CardContent sx={{ flexGrow: 1 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
