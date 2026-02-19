@@ -121,14 +121,15 @@ const technicalSkills = [
 ];
 
 const aiSkills = [
-  "ChatGPT", "Perplexity.ai", "Anthropic Claude", "Microsoft Copilot",
-  "Cursor", "Gemini 2.5 Pro", "Palantir Foundry + AIP", "Ontology SDK", "Firebase AI Studio"
+  "Perplexity", "Anthropic Claude", "ChatGPT", "Grok", "Microsoft Copilot",
+  "Windsurf", "Gemini", "Palantir Foundry + AIP", "Ontology SDK"
 ];
 
 const keySkills = [
-  "Space Systems Engineering", "Intelligence Analysis", "Project Management",
-  "Software Development", "Risk Assessment", "Satellite Operations",
-  "Technical Intelligence", "Cybersecurity", "Team Leadership"
+  "Space Systems Engineering", "Intelligence Analysis",
+  "Project Management", "Software Development", "Risk Assessment",
+  "Satellite Operations", "Technical Intelligence", "Cybersecurity",
+  "Team Leadership", "INTJ-T 5w4 sp/sx"
 ];
 
 const languages = [
@@ -692,7 +693,7 @@ const topPicks = [
 
 const favoritePodcasts = [
   {
-    name: "HubermanLab",
+    name: "Huberman Lab",
     host: "Andrew Huberman",
     youtubeChannel: "https://youtube.com/@hubermanlab",
     image: "https://yt3.googleusercontent.com/Y8lhyl8aHY42phxwoAwUqwLGDp-z8nmtj3Z7_JB-Oh4yIZ1OFYb-MlJRuz_oygqsYQU-VgGqiOM=s160-c-k-c0x00ffffff-no-rj"
@@ -726,6 +727,24 @@ const favoritePodcasts = [
     host: "Shawn Ryan",
     youtubeChannel: "https://youtube.com/@ShawnRyanShow",
     image: "https://yt3.googleusercontent.com/Q4QU_fme2fF3UHscjdJcS7_GvyRHN7JFeZqt70KfbwCH3vYTBcQGnicQmWryd6zztyzSq9T37w=s160-c-k-c0x00ffffff-no-rj"
+  },
+  {
+    name: "The Telepathy Tapes",
+    host: "Ky Dickens",
+    youtubeChannel: "https://youtube.com/@TheTelepathyTapes",
+    image: "https://yt3.googleusercontent.com/p4mMjguJCQ6m_d_9NWE6Rhy3-io_CxgztCSBD4V75ovW9kDfqkbw8Na1FmC06WfGufRO9BG80g=s160-c-k-c0x00ffffff-no-rj"
+  },
+  {
+    name: "Julian Dorey Podcast",
+    host: "Julian Dorey",
+    youtubeChannel: "https://youtube.com/@JulianDorey",
+    image: "https://yt3.googleusercontent.com/Bl2Ytmn1jZawbaWxa_xF7XUiOjrfLALrWp-_YY6z2b0ZNs7VdV4iSG-RmOkpWWJxaxL4DhB8=s160-c-k-c0x00ffffff-no-rj"
+  },
+  {
+    name: "Joe Rogan Experience",
+    host: "Joe Rogan",
+    youtubeChannel: "https://youtube.com/@joerogan",
+    image: "https://yt3.googleusercontent.com/ytc/AIdro_kIOv8XSayB3mVzdmGH6r6nOuncclc_QxWr7TYTXM4dFrs=s160-c-k-c0x00ffffff-no-rj"
   }
 ];
 
@@ -1982,7 +2001,7 @@ function TopPicksTab() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Tooltip title="View product on Amazon">
+                <Tooltip title="Open in Amazon">
                   <Button
                     size="small"
                     variant="contained"
@@ -1990,6 +2009,13 @@ function TopPicksTab() {
                     href={product.link}
                     target="_blank"
                     fullWidth
+                    sx={{
+                      backgroundColor: '#f5de62',
+                      color: '#000000',
+                      '&:hover': {
+                        backgroundColor: '#FF9900'
+                      }
+                    }}
                   >
                     View Product
                   </Button>
