@@ -9,7 +9,6 @@ import "leaflet/dist/leaflet.css";
 
 const livedIcon = new L.Icon({
     iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -17,7 +16,6 @@ const livedIcon = new L.Icon({
 
 const visitedIcon = new L.Icon({
     iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png",
-    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
     iconSize: [15, 24], // Size of the icon in pixels [width, height]
     iconAnchor: [8, 24], // Point on the icon that aligns with the marker's geographical location [x, y from top-left corner]
     popupAnchor: [0, -24], // Point from which popups will open, relative to the icon anchor [x, y offset]
