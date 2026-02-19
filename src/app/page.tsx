@@ -630,54 +630,54 @@ const breathingTechniques = [
   { name: "4-7-8 Technique", description: "Inhale 4, hold 7, exhale 8 for sleep", icon: BedIcon }
 ];
 
-const recommendations = [
+const topPicks = [
   {
-    name: "Garmin Forerunner 255",
-    description: "Advanced GPS running watch with training metrics, perfect for marathon training",
-    price: "$349.99",
-    category: "Fitness",
-    image: "https://via.placeholder.com/300x200?text=Garmin+Watch",
-    link: "#"
+    name: "Garmin Instinct 2 Solar",
+    description: "A rugged GPS smartwatch offers unlimited solar-powered battery life, full health and fitness tracking, built-in GPS with tactical features, smart notifications, and military-grade durability for reliable performance in any environment.",
+    price: "$263.30",
+    category: "Smartwatch",
+    image: "https://m.media-amazon.com/images/I/61OuqJZ3liL._AC_SL1500_.jpg",
+    link: "https://a.co/d/0iOErTKB"
   },
   {
-    name: "Osprey Atmos AG 65",
-    description: "Premium backpacking pack with anti-gravity suspension for long trails",
-    price: "$290.00",
-    category: "Hiking",
-    image: "https://via.placeholder.com/300x200?text=Osprey+Pack",
-    link: "#"
+    name: "ThruNite Archer 2A C",
+    description: "A compact, ultra-bright flashlight made from durable aerospace aluminum, featuring multiple brightness modes, 2x AA or rechargeable battery compatibility, rugged waterproof, impact-resistant design for reliable use anywhere.",
+    price: "$29.95",
+    category: "Flashlight",
+    image: "https://m.media-amazon.com/images/I/51-pL1xIOcL._AC_SL1500_.jpg",
+    link: "https://a.co/d/03t5dyeJ"
   },
   {
-    name: "Anker PowerCore 20000",
-    description: "High-capacity portable charger for extended outdoor adventures",
+    name: "Anker Power Bank",
+    description: "A 20,000 mAh power bank delivers up to 87W fast charging for laptops, phones, and tablets, featuring a durable built-in USB-C cable and quick recharge capability for reliable all-day power on the go.",
     price: "$49.99",
-    category: "Tech",
-    image: "https://via.placeholder.com/300x200?text=Anker+Charger",
-    link: "#"
+    category: "Power Bank",
+    image: "https://m.media-amazon.com/images/I/61jWG2JyYNL._AC_SL1500_.jpg",
+    link: "https://a.co/d/01OVizkm"
   },
   {
-    name: "ThermoPro TP03",
-    description: "Digital meat thermometer for precise cooking temperature control",
-    price: "$16.99",
-    category: "Kitchen",
-    image: "https://via.placeholder.com/300x200?text=Thermometer",
-    link: "#"
+    name: "Sawyer Squeeze",
+    description: "An ultralight 2 oz water filter that lets hikers safely drink from streams or lakes by removing bacteria, protozoa, and microplastics, and easily connects to bottles, pouches, or hydration packs for clean water anywhere on the trail.",
+    price: "$45.95",
+    category: "Water Filter",
+    image: "https://m.media-amazon.com/images/I/71PlK2Jo5uL._AC_SL1500_.jpg",
+    link: "https://a.co/d/08oWDfEH"
   },
   {
-    name: "Blue Light Blocking Glasses",
-    description: "Computer glasses to reduce eye strain during long coding sessions",
-    price: "$24.99",
-    category: "Tech",
-    image: "https://via.placeholder.com/300x200?text=Blue+Light+Glasses",
-    link: "#"
+    name: "EPICKA",
+    description: "This compact all-in-one travel adapter works in 200+ countries with 4 plug types and 5 USB ports, letting you safely charge multiple devices at once anywhere in the world.",
+    price: "$19.99",
+    category: "Universal Travel Adapter",
+    image: "https://m.media-amazon.com/images/I/71Z8QXcvteL._AC_SL1500_.jpg",
+    link: "https://a.co/d/0gyFIfh9"
   },
   {
-    name: "Optimum Nutrition Gold Standard",
-    description: "Premium whey protein for post-workout recovery and muscle building",
-    price: "$64.99",
-    category: "Fitness",
-    image: "https://via.placeholder.com/300x200?text=Protein+Powder",
-    link: "#"
+    name: "Smartwool Everyday",
+    description: "These lightweight merino wool crew socks offer a snug, durable fit with soft cushioning, moisture control, and seamless comfort for all-day wear.",
+    price: "$24.00",
+    category: "Merino Wool Socks",
+    image: "https://m.media-amazon.com/images/I/81Pakvnc+xL._AC_SX679_.jpg",
+    link: "https://a.co/d/0hjHwzpT"
   }
 ];
 
@@ -1908,9 +1908,9 @@ function LifestyleTab() {
   );
 }
 
-// ==================== RECOMMENDATIONS TAB COMPONENT ====================
+// ==================== TOP PICKS TAB COMPONENT ====================
 
-function RecommendationsTab() {
+function TopPicksTab() {
   return (
     <Box>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -1921,7 +1921,7 @@ function RecommendationsTab() {
       </Typography>
 
       <Grid container spacing={3}>
-        {recommendations.map((product) => (
+        {topPicks.map((product) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.name}>
             <Card elevation={3}
               sx={{
@@ -1936,9 +1936,10 @@ function RecommendationsTab() {
               }}>
               <CardMedia
                 component="img"
-                height="200"
+                height="150"
                 image={product.image}
                 alt={product.name}
+                sx={{ objectFit: 'contain' }}
               />
               <CardContent sx={{ flexGrow: 1 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
@@ -1955,7 +1956,7 @@ function RecommendationsTab() {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Tooltip title="Affiliate link - I may earn from qualifying purchases">
+                <Tooltip title="View product on Amazon">
                   <Button
                     size="small"
                     variant="contained"
@@ -1984,8 +1985,7 @@ function RecommendationsTab() {
         }}
       >
         <Typography variant="body2" color="text.secondary" align="center">
-          <strong>Disclosure:</strong> As an affiliate, I may earn from qualifying purchases. This
-          comes at no additional cost to you and helps support my content.
+          <strong>Disclosure:</strong> I am <u>not</u> an affiliate and do <u>not</u> earn any commission from purchases. Links provided are purely for convenience.
         </Typography>
       </Box>
     </Box>
@@ -2036,7 +2036,7 @@ export default function Home() {
               <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
               <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
               <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
-              <Tab label="Recommendations" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
+              <Tab label="Top Picks" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
             </Tabs>
           </Box>
 
@@ -2059,7 +2059,7 @@ export default function Home() {
             <LifestyleTab />
           </TabPanel>
           <TabPanel value={activeTab} index={6}>
-            <RecommendationsTab />
+            <TopPicksTab />
           </TabPanel>
         </Card>
       </Container>
