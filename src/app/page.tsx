@@ -24,6 +24,7 @@ import {
   Paper,
   Link,
   Grid,
+  Fade
 } from '@mui/material';
 
 // Import MUI Icons
@@ -827,19 +828,20 @@ interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
+  fading?: boolean;
 }
 
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+function TabPanel({ children, value, index, fading }: TabPanelProps) {
   return (
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`tabpanel-${index}`}
-      aria-labelledby={`tab-${index}`}
-      {...other}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      <Fade in={!fading} timeout={100}>
+        <Box sx={{ p: 3 }}>{value === index ? children : null}</Box>
+      </Fade>
     </div>
   );
 }
@@ -2020,9 +2022,16 @@ function TopPicksTab() {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setActiveTab(newValue);
+    if (newValue !== activeTab) {
+      setTransitioning(true);
+      setTimeout(() => {
+        setActiveTab(newValue);
+        setTransitioning(false);
+      }, 100); // fade-out time in ms
+    }
   };
 
   return (
@@ -2034,59 +2043,61 @@ export default function Home() {
       }}
     >
       <ThemeToggle />
-      <Container maxWidth="lg">
-        <HeaderSection />
-        <Card elevation={3}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs
-              value={activeTab}
-              onChange={handleTabChange}
-              aria-label="portfolio tabs"
-              variant="scrollable"
-              scrollButtons="auto"
-              sx={{
-                '.MuiTabs-indicator': {
-                  height: 3,
-                },
-                '& .MuiTab-root:hover': {
-                  backgroundColor: 'rgba(0, 0, 0, 0.04)',
-                  transition: 'background-color 0.2s ease-in-out',
-                },
-              }}
-            >
-              <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
-              <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
-              <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
-              <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
-              <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
-              <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
-              <Tab label="Top Picks" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
-            </Tabs>
-          </Box>
+      <Fade in={true} timeout={1000}>
+        <Container maxWidth="lg">
+          <HeaderSection />
+          <Card elevation={3}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <Tabs
+                value={activeTab}
+                onChange={handleTabChange}
+                aria-label="portfolio tabs"
+                variant="scrollable"
+                scrollButtons="auto"
+                sx={{
+                  '.MuiTabs-indicator': {
+                    height: 3,
+                  },
+                  '& .MuiTab-root:hover': {
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+                    transition: 'background-color 0.2s ease-in-out',
+                  },
+                }}
+              >
+                <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
+                <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
+                <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
+                <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
+                <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
+                <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
+                <Tab label="Top Picks" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
+              </Tabs>
+            </Box>
 
-          <TabPanel value={activeTab} index={0}>
-            <ResumeTab />
-          </TabPanel>
-          <TabPanel value={activeTab} index={1}>
-            <TravelTab />
-          </TabPanel>
-          <TabPanel value={activeTab} index={2}>
-            <MoviesTab />
-          </TabPanel>
-          <TabPanel value={activeTab} index={3}>
-            <BooksTab />
-          </TabPanel>
-          <TabPanel value={activeTab} index={4}>
-            <PodcastsTab />
-          </TabPanel>
-          <TabPanel value={activeTab} index={5}>
-            <LifestyleTab />
-          </TabPanel>
-          <TabPanel value={activeTab} index={6}>
-            <TopPicksTab />
-          </TabPanel>
-        </Card>
-      </Container>
+            <TabPanel value={activeTab} index={0} fading={transitioning}>
+              <ResumeTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={1} fading={transitioning}>
+              <TravelTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={2} fading={transitioning}>
+              <MoviesTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={3} fading={transitioning}>
+              <BooksTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={4} fading={transitioning}>
+              <PodcastsTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={5} fading={transitioning}>
+              <LifestyleTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={6} fading={transitioning}>
+              <TopPicksTab />
+            </TabPanel>
+          </Card>
+        </Container>
+      </Fade>
     </Box>
   );
 }
