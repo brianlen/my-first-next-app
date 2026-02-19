@@ -683,7 +683,7 @@ const topPicks = [
     name: "Smartwool Everyday",
     description: "These lightweight merino wool crew socks offer a snug, durable fit with soft cushioning, moisture control, and seamless comfort for all-day wear.",
     price: "$24.00",
-    category: "Merino Wool Socks",
+    category: "Socks",
     image: "https://m.media-amazon.com/images/I/81Pakvnc+xL._AC_SX679_.jpg",
     link: "https://a.co/d/0hjHwzpT"
   }
@@ -1251,7 +1251,7 @@ function MarathonSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  Year {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>YEAR {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell>
@@ -1263,7 +1263,7 @@ function MarathonSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  Marathon {sortBy === 'name' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>MARATHON {sortBy === 'name' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell>
@@ -1275,7 +1275,7 @@ function MarathonSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  Finish Time {sortBy === 'time' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>FINISH TIME {sortBy === 'time' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
             </TableRow>
@@ -1368,7 +1368,7 @@ function MoviesSection() {
           <TableHead>
             <TableRow>
               <TableCell>
-                <Button onClick={() => {
+                <Button sx={{ whiteSpace: 'nowrap' }} onClick={() => {
                   if (sortBy !== 'year') {
                     setSortBy('year');
                     setSortDirection('asc');
@@ -1376,7 +1376,7 @@ function MoviesSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  YEAR {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>YEAR {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell>
@@ -1388,7 +1388,7 @@ function MoviesSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  TITLE {sortBy === 'title' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>TITLE {sortBy === 'title' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell>
@@ -1400,10 +1400,10 @@ function MoviesSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  GENRE {sortBy === 'genre' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>GENRE {sortBy === 'genre' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
-              <TableCell>SUMMARY</TableCell>
+              <TableCell><strong>SUMMARY</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -1460,7 +1460,7 @@ function BooksSection() {
           <TableHead>
             <TableRow>
               <TableCell>
-                <Button onClick={() => {
+                <Button sx={{ whiteSpace: 'nowrap' }} onClick={() => {
                   if (sortBy !== 'year') {
                     setSortBy('year');
                     setSortDirection('asc');
@@ -1468,7 +1468,7 @@ function BooksSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  YEAR {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>YEAR {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell></TableCell>
@@ -1481,7 +1481,7 @@ function BooksSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  TITLE {sortBy === 'title' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>TITLE {sortBy === 'title' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell>
@@ -1493,11 +1493,11 @@ function BooksSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  AUTHOR {sortBy === 'author' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>AUTHOR {sortBy === 'author' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell>
-                <Button onClick={() => {
+                <Button sx={{ whiteSpace: 'nowrap' }} onClick={() => {
                   if (sortBy !== 'genre') {
                     setSortBy('genre');
                     setSortDirection('asc');
@@ -1505,10 +1505,10 @@ function BooksSection() {
                     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
                   }
                 }}>
-                  GENRE {sortBy === 'genre' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}
+                  <strong>GENRE {sortBy === 'genre' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
-              <TableCell>SUMMARY</TableCell>
+              <TableCell><strong>SUMMARY</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -1662,19 +1662,18 @@ function NutritionSection() {
 }
 
 function SupplementsSection() {
+  const [sortBy, setSortBy] = useState<'what' | 'when'>('what');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
   const sortedSupplements = [...favoriteSupplements].sort((a, b) => {
-    if (sortDirection === 'asc') {
-      return a.when.localeCompare(b.when);
-    } else {
-      return b.when.localeCompare(a.when);
+    if (sortBy === 'what') {
+      return sortDirection === 'asc' ? a.what.localeCompare(b.what) : b.what.localeCompare(a.what);
     }
+    if (sortBy === 'when') {
+      return sortDirection === 'asc' ? a.when.localeCompare(b.when) : b.when.localeCompare(a.when);
+    }
+    return 0;
   });
-
-  const handleSortToggle = () => {
-    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-  };
 
   return (
     <Box sx={{ mb: 4 }}>
@@ -1685,10 +1684,28 @@ function SupplementsSection() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell><strong>WHAT</strong></TableCell>
               <TableCell>
-                <Button onClick={handleSortToggle} variant="text" size="small">
-                  <strong>WHEN {sortDirection === 'asc' ? '↑' : '↓'}</strong>
+                <Button onClick={() => {
+                  if (sortBy !== 'what') {
+                    setSortBy('what');
+                    setSortDirection('asc');
+                  } else {
+                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+                  }
+                }} variant="text" size="small">
+                  <strong>WHAT {sortBy === 'what' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button onClick={() => {
+                  if (sortBy !== 'when') {
+                    setSortBy('when');
+                    setSortDirection('asc');
+                  } else {
+                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+                  }
+                }} variant="text" size="small">
+                  <strong>WHEN {sortBy === 'when' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
               <TableCell><strong>WHY</strong></TableCell>
@@ -1814,7 +1831,6 @@ function HabitatSection() {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card elevation={2}
             sx={{
-              mb: 3,
               transition: 'transform 0.2s',
               '&:hover': {
                 transform: 'translateY(-4px)',
@@ -1834,7 +1850,6 @@ function HabitatSection() {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card elevation={2}
             sx={{
-              mb: 3,
               transition: 'transform 0.2s',
               '&:hover': {
                 transform: 'translateY(-4px)',
@@ -1854,7 +1869,6 @@ function HabitatSection() {
         <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <Card elevation={2}
             sx={{
-              mb: 3,
               transition: 'transform 0.2s',
               '&:hover': {
                 transform: 'translateY(-4px)',
@@ -1873,7 +1887,7 @@ function HabitatSection() {
         </Grid>
       </Grid>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ mt: 3 }}>
         {habitatHouses.map((house) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={house.address}>
             <Card elevation={3}
