@@ -1075,6 +1075,73 @@ function ResumeTab() {
 
 // ==================== TRAVEL TAB COMPONENTS ====================
 
+function PlacedLivedAndCitiesVisitedSection() {
+  const TravelMap = dynamic(() => import("./components/TravelMap"), {
+    ssr: false,
+    loading: () => (
+      <Box sx={{ height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Typography color="text.secondary">Loading map...</Typography>
+      </Box>
+    ),
+  });
+
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+        <PublicIcon /> Places Lived & Cities Visited
+      </Typography>
+
+      {/* Legend */}
+      <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
+        <Chip icon={<HomeIcon />} label="Places Lived" color="error" size="small" />
+        <Chip icon={<FlightIcon />} label="Cities Visited" color="primary" size="small" />
+      </Box>
+
+      <TravelMap placesLived={placesLived} citiesVisited={citiesVisited} />
+    </Box>
+  )
+}
+
+function CountriesSection() {
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <PublicIcon /> Countries Visited
+      </Typography>
+      <Grid container spacing={2}>
+        {countriesVisited.map((visit) => (
+          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={visit.country}>
+            <Card elevation={2}
+              sx={{
+                height: '100%',
+                transition: 'transform 0.2s',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}>
+              <CardContent>
+                <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>
+                  <visit.flag style={{ width: '80px', height: 'auto', borderRadius: '4px' }} />
+                </Box>
+                <Typography variant="h6" align="center">{visit.country}</Typography>
+                <Typography variant="body2" color="text.secondary" align="center">
+                  Visited {visit.year}
+                </Typography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'center', mt: 1 }}>
+                  {visit.cities.map((city) => (
+                    <Chip key={city} label={city} size="small" variant="outlined" />
+                  ))}
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+}
+
 function MarathonSection() {
   const [sortBy, setSortBy] = useState<'none' | 'year' | 'name' | 'time'>('none');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
@@ -1229,73 +1296,6 @@ function MarathonSection() {
   );
 }
 
-function PlacedLivedAndCitiesVisitedSection() {
-  const TravelMap = dynamic(() => import("./components/TravelMap"), {
-    ssr: false,
-    loading: () => (
-      <Box sx={{ height: 500, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Typography color="text.secondary">Loading map...</Typography>
-      </Box>
-    ),
-  });
-
-  return (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        <PublicIcon /> Places Lived & Cities Visited
-      </Typography>
-
-      {/* Legend */}
-      <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
-        <Chip icon={<HomeIcon />} label="Places Lived" color="error" size="small" />
-        <Chip icon={<FlightIcon />} label="Cities Visited" color="primary" size="small" />
-      </Box>
-
-      <TravelMap placesLived={placesLived} citiesVisited={citiesVisited} />
-    </Box>
-  )
-}
-
-function CountriesSection() {
-  return (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <PublicIcon /> Countries Visited
-      </Typography>
-      <Grid container spacing={2}>
-        {countriesVisited.map((visit) => (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={visit.country}>
-            <Card elevation={2}
-              sx={{
-                height: '100%',
-                transition: 'transform 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: 4
-                }
-              }}>
-              <CardContent>
-                <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>
-                  <visit.flag style={{ width: '80px', height: 'auto', borderRadius: '4px' }} />
-                </Box>
-                <Typography variant="h6" align="center">{visit.country}</Typography>
-                <Typography variant="body2" color="text.secondary" align="center">
-                  Visited {visit.year}
-                </Typography>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, justifyContent: 'center', mt: 1 }}>
-                  {visit.cities.map((city) => (
-                    <Chip key={city} label={city} size="small" variant="outlined" />
-                  ))}
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
-  );
-}
-
 function AppalachianTrailSection() {
   return (
     <Box sx={{ mb: 4 }}>
@@ -1331,9 +1331,9 @@ function AppalachianTrailSection() {
 function TravelTab() {
   return (
     <Box>
-      <MarathonSection />
       <PlacedLivedAndCitiesVisitedSection />
       <CountriesSection />
+      <MarathonSection />
       <AppalachianTrailSection />
     </Box>
   );
