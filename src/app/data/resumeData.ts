@@ -63,11 +63,11 @@ export const technicalSkills = [
 export const aiSkills = [
     "Perplexity",
     "Anthropic Claude",
-    "ChatGPT",
-    "Grok",
+    "OpenAI ChatGPT",
+    "xAI Grok",
     "Microsoft Copilot",
+    "Google Gemini",
     "Windsurf",
-    "Gemini",
     "Palantir Foundry + AIP",
     "Ontology SDK"
 ];
