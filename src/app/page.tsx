@@ -1941,11 +1941,18 @@ function HabitatSection() {
   );
 }
 
-function LifestyleTab() {
+function FoodTab() {
   return (
     <Box>
       <NutritionSection />
       <SupplementsSection />
+    </Box>
+  );
+}
+
+function LifestyleTab() {
+  return (
+    <Box>
       <SleepSection />
       <BreathingSection />
       <HabitatSection />
@@ -2017,7 +2024,7 @@ function TopPicksTab() {
                       }
                     }}
                   >
-                    View Product
+                    View on Amazon
                   </Button>
                 </Tooltip>
               </CardActions>
@@ -2095,8 +2102,9 @@ export default function Home() {
                 <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
                 <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
                 <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
-                <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(5)} />
-                <Tab label="Top Picks" icon={<ShoppingCartIcon />} {...a11yProps(6)} />
+                <Tab label="Food" icon={<RestaurantIcon />} {...a11yProps(5)} />
+                <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(6)} />
+                <Tab label="Top Picks" icon={<ShoppingCartIcon />} {...a11yProps(7)} />
               </Tabs>
             </Box>
 
@@ -2116,9 +2124,12 @@ export default function Home() {
               <PodcastsTab />
             </TabPanel>
             <TabPanel value={activeTab} index={5} fading={transitioning}>
-              <LifestyleTab />
+              <FoodTab />
             </TabPanel>
             <TabPanel value={activeTab} index={6} fading={transitioning}>
+              <LifestyleTab />
+            </TabPanel>
+            <TabPanel value={activeTab} index={7} fading={transitioning}>
               <TopPicksTab />
             </TabPanel>
           </Card>
