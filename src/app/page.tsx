@@ -145,7 +145,7 @@ const languages = [
   { name: "Japanese", level: "Beginner", years: "6 months", flag: JP }
 ];
 
-const marathons = [
+const marathonsArray = [
   { name: "Los Angeles Marathon", year: 2019, time: "5:22:44" },
   { name: "Air Force Marathon", year: 2019, time: "5:21:33" },
   { name: "Air Force Marathon", year: 2020, time: "5:23:52" },
@@ -615,7 +615,7 @@ const breathingTechniques = [
   { name: "4-7-8 Technique", description: "Inhale 4, hold 7, exhale 8 for sleep", icon: BedIcon }
 ];
 
-const topPicks = [
+const productsArray = [
   {
     name: "Garmin Instinct 2 Solar",
     description: "A rugged GPS smartwatch offers unlimited solar-powered battery life, full health and fitness tracking, built-in GPS with tactical features, smart notifications, and military-grade durability for reliable performance in any environment.",
@@ -1084,7 +1084,7 @@ function PlacedLivedAndCitiesVisitedSection() {
   return (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-        <PublicIcon /> Places Lived & Cities Visited
+        <PublicIcon /> Places
       </Typography>
 
       {/* Legend */}
@@ -1139,10 +1139,10 @@ function CountriesSection() {
 }
 
 function MarathonSection() {
-  const [sortBy, setSortBy] = useState<'none' | 'year' | 'name' | 'time'>('none');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [sortBy, setSortBy] = useState<'none' | 'year' | 'name' | 'time'>('year');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
 
-  const sortedMarathons = [...marathons].sort((a, b) => {
+  const sortedMarathons = [...marathonsArray].sort((a, b) => {
     if (sortBy === 'year') {
       return sortDirection === 'asc' ? a.year - b.year : b.year - a.year;
     }
@@ -1161,19 +1161,19 @@ function MarathonSection() {
   };
 
   const avgTime =
-    marathons.reduce((acc, m) => acc + timeToSeconds(m.time), 0) / marathons.length;
+    marathonsArray.reduce((acc, m) => acc + timeToSeconds(m.time), 0) / marathonsArray.length;
   const avgHours = Math.floor(avgTime / 3600);
   const avgMinutes = Math.floor((avgTime % 3600) / 60);
   const avgSeconds = Math.floor(avgTime % 60);
 
-  const bestTime = marathons.reduce((best, m) =>
+  const bestTime = marathonsArray.reduce((best, m) =>
     timeToSeconds(m.time) < timeToSeconds(best.time) ? m : best
   );
 
   return (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <DirectionsRunIcon /> Marathon Achievements
+        <DirectionsRunIcon /> Marathons
       </Typography>
 
       <Grid container spacing={2} sx={{ mb: 3 }}>
@@ -1187,7 +1187,7 @@ function MarathonSection() {
               }
             }}>
             <CardContent>
-              <Typography variant="h6" align="center">{marathons.length}</Typography>
+              <Typography variant="h6" align="center">{marathonsArray.length}</Typography>
               <Typography variant="body2" color="text.secondary" align="center">
                 Total Marathons
               </Typography>
@@ -1237,7 +1237,6 @@ function MarathonSection() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>#</TableCell>
               <TableCell>
                 <Button onClick={() => {
                   if (sortBy !== 'year') {
@@ -1263,23 +1262,24 @@ function MarathonSection() {
                 </Button>
               </TableCell>
               <TableCell>
-                <Button onClick={() => {
-                  if (sortBy !== 'time') {
-                    setSortBy('time');
-                    setSortDirection('asc');
-                  } else {
-                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-                  }
-                }}>
-                  <strong>FINISH TIME {sortBy === 'time' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
-                </Button>
+                <Tooltip title="Chip time (hh:mm:ss)">
+                  <Button onClick={() => {
+                    if (sortBy !== 'time') {
+                      setSortBy('time');
+                      setSortDirection('asc');
+                    } else {
+                      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+                    }
+                  }}>
+                    <strong>FINISH TIME {sortBy === 'time' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
+                  </Button>
+                </Tooltip>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {sortedMarathons.map((marathon, index) => (
               <TableRow key={index}>
-                <TableCell>{index + 1}</TableCell>
                 <TableCell>{marathon.year}</TableCell>
                 <TableCell>{marathon.name}</TableCell>
                 <TableCell>{marathon.time}</TableCell>
@@ -1615,9 +1615,6 @@ function PodcastsTab() {
 // ==================== FOOD TAB COMPONENTS ====================
 
 function FoodSection() {
-  const totalEat = eatFoods.reduce((sum, c) => sum + c.items.length, 0);
-  const totalAvoid = avoidFoods.reduce((sum, c) => sum + c.items.length, 0);
-
   return (
     <Box sx={{ maxWidth: 1100, mx: "auto", px: 2, py: 4 }}>
 
@@ -1639,29 +1636,6 @@ function FoodSection() {
         >
           <RestaurantIcon /> Food
         </Typography>
-
-        <Box sx={{ display: "flex", gap: 1 }}>
-          <Chip
-            label={`${totalEat} foods to eat`}
-            size="small"
-            sx={{
-              bgcolor: "rgba(102,187,106,0.12)",
-              color: "#66bb6a",
-              border: "1px solid rgba(102,187,106,0.35)",
-              fontWeight: 600,
-            }}
-          />
-          <Chip
-            label={`${totalAvoid} foods to avoid`}
-            size="small"
-            sx={{
-              bgcolor: "rgba(239,83,80,0.12)",
-              color: "#ef5350",
-              border: "1px solid rgba(239,83,80,0.35)",
-              fontWeight: 600,
-            }}
-          />
-        </Box>
       </Box>
 
       {/* Two-Panel Grid */}
@@ -1957,20 +1931,20 @@ function LifestyleTab() {
   );
 }
 
-// ==================== TOP PICKS TAB COMPONENT ====================
+// ==================== PRODUCTS TAB COMPONENT ====================
 
-function TopPicksTab() {
+function ProductsTab() {
   return (
     <Box>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <ShoppingCartIcon /> Top Picks
+        <ShoppingCartIcon /> Products
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
         These are products I personally use and recommend.
       </Typography>
 
       <Grid container spacing={3}>
-        {topPicks.map((product) => (
+        {productsArray.map((product) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={product.name}>
             <Card elevation={3}
               sx={{
@@ -2077,7 +2051,7 @@ export default function Home() {
         <Container maxWidth="lg">
           <HeaderSection />
           <Card elevation={3}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
               <Tabs
                 value={activeTab}
                 onChange={handleTabChange}
@@ -2087,6 +2061,9 @@ export default function Home() {
                 sx={{
                   '.MuiTabs-indicator': {
                     height: 3,
+                  },
+                  '& .MuiTab-root': {
+                    minWidth: 100,
                   },
                   '& .MuiTab-root:hover': {
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
@@ -2101,7 +2078,7 @@ export default function Home() {
                 <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
                 <Tab label="Food" icon={<RestaurantIcon />} {...a11yProps(5)} />
                 <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(6)} />
-                <Tab label="Top Picks" icon={<ShoppingCartIcon />} {...a11yProps(7)} />
+                <Tab label="Products" icon={<ShoppingCartIcon />} {...a11yProps(7)} />
               </Tabs>
             </Box>
 
@@ -2127,7 +2104,7 @@ export default function Home() {
               <LifestyleTab />
             </TabPanel>
             <TabPanel value={activeTab} index={7} fading={transitioning}>
-              <TopPicksTab />
+              <ProductsTab />
             </TabPanel>
           </Card>
         </Container>
