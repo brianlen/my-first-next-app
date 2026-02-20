@@ -108,34 +108,34 @@ function a11yProps(index: number) {
 
 function HeaderSection() {
   return (
-    <Card elevation={3} sx={{ mb: 4 }}>
-      <CardContent>
-        <Typography variant="h3" gutterBottom align="center" sx={{ fontWeight: 'bold' }}>
+    <Card elevation={1} sx={{ mb: 2 }}>
+      <CardContent sx={{ pb: 1 }}>
+        <Typography variant="h3" align="center" sx={{ fontWeight: 'bold', mb: 1 }}>
           Henry Cho
         </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, mb: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 1 }}>
           <Avatar
             alt="Henry Cho"
             sx={{
-              width: 200,
-              height: 200,
+              width: 120,
+              height: 120,
               margin: 'auto',
-              border: '4px solid',
-              borderColor: 'primary.main'
+              border: '2px solid',
+              borderColor: '#000000'
             }}
-            src="/avatar.jpg"
+            src="avatar.jpg"
           />
         </Box>
-        <Typography variant="h5" gutterBottom align="center" color="text.secondary">
+        <Typography variant="h5" align="center" color="text.secondary" sx={{ mb: 1 }}>
           Space Systems Engineer & Research Analyst
         </Typography>
-        <Typography variant="body1" paragraph align="center" sx={{ mt: 2 }}>
+        <Typography variant="body2" align="center" sx={{ mt: 1, mb: 1 }}>
           Experienced space systems engineer and research analyst with a background in
           satellite technology, software development, and strategic space operations. Skilled in
           project management, cross-functional team leadership, and technical intelligence analysis.
         </Typography>
 
-        <Grid container spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+        <Grid container spacing={1} justifyContent="center" sx={{ mt: 1 }}>
           <Grid>
             <Tooltip title="Copy email to clipboard">
               <Chip
@@ -1241,7 +1241,7 @@ function ProductsTab() {
                   </Typography>
                   <Chip label={product.category} size="small" color="primary" />
                 </Box>
-                <Typography variant="body2" color="text.secondary" paragraph>
+                <Typography variant="body2" color="text.secondary" >
                   {product.description}
                 </Typography>
                 <Typography variant="h6" color="primary">
