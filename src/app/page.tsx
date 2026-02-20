@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import React, { useState } from 'react';
 import {
+  Avatar,
   Box,
   Button,
   Card,
@@ -112,6 +113,19 @@ function HeaderSection() {
         <Typography variant="h3" gutterBottom align="center" sx={{ fontWeight: 'bold' }}>
           Henry Cho
         </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2, mb: 2 }}>
+          <Avatar
+            alt="Henry Cho"
+            sx={{
+              width: 200,
+              height: 200,
+              margin: 'auto',
+              border: '4px solid',
+              borderColor: 'primary.main'
+            }}
+            src="/avatar.jpg"
+          />
+        </Box>
         <Typography variant="h5" gutterBottom align="center" color="text.secondary">
           Space Systems Engineer & Research Analyst
         </Typography>
