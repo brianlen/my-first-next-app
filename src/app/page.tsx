@@ -2,61 +2,61 @@
 import dynamic from "next/dynamic";
 import React, { useState } from 'react';
 import {
-  Container,
-  Typography,
+  Box,
+  Button,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
-  CardActions,
   Chip,
-  Box,
+  Container,
   Divider,
-  TableContainer,
+  Fade,
+  Grid,
+  Link,
+  Paper,
+  Tab,
   Table,
+  TableBody,
+  TableCell,
+  TableContainer,
   TableHead,
   TableRow,
-  TableCell,
-  TableBody,
-  Tooltip,
   Tabs,
-  Tab,
-  Button,
-  Paper,
-  Link,
-  Grid,
-  Fade
+  Tooltip,
+  Typography
 } from '@mui/material';
 
 // Import MUI Icons
-import PodcastsIcon from '@mui/icons-material/Podcasts';
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
-import LanguageIcon from '@mui/icons-material/Language';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import CodeIcon from '@mui/icons-material/Code';
-import PhoneIcon from '@mui/icons-material/Phone';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
-import StarIcon from '@mui/icons-material/Star';
-import PlaceIcon from '@mui/icons-material/Place';
-import PublicIcon from '@mui/icons-material/Public';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import MovieIcon from '@mui/icons-material/Movie';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
-import HotelIcon from '@mui/icons-material/Hotel';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import AirIcon from '@mui/icons-material/Air';
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import MedicationIcon from '@mui/icons-material/Medication';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import CodeIcon from '@mui/icons-material/Code';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
-import HomeIcon from '@mui/icons-material/Home';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import FlightIcon from '@mui/icons-material/Flight';
+import HomeIcon from '@mui/icons-material/Home';
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import HotelIcon from '@mui/icons-material/Hotel';
+import LanguageIcon from '@mui/icons-material/Language';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import MedicationIcon from '@mui/icons-material/Medication';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import MovieIcon from '@mui/icons-material/Movie';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import PhoneIcon from '@mui/icons-material/Phone';
+import PlaceIcon from '@mui/icons-material/Place';
+import PodcastsIcon from '@mui/icons-material/Podcasts';
+import PublicIcon from '@mui/icons-material/Public';
+import RestaurantIcon from '@mui/icons-material/Restaurant';
+import SchoolIcon from '@mui/icons-material/School';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StarIcon from '@mui/icons-material/Star';
+import WorkIcon from '@mui/icons-material/Work';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 // Import custom components
 import ThemeToggle from './components/ThemeToggle';
