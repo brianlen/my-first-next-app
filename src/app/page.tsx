@@ -73,8 +73,12 @@ import ES from 'country-flag-icons/react/3x2/ES';
 import CA from 'country-flag-icons/react/3x2/CA';
 import GB from 'country-flag-icons/react/3x2/GB';
 
-// Import custom ThemeToggle component
+// Import custom components
 import ThemeToggle from './components/ThemeToggle';
+import FoodPanel from './components/FoodPanel';
+
+// Import custom data
+import { eatFoods, avoidFoods } from './data/foodData';
 
 // ==================== DATA CONSTANTS ====================
 
@@ -550,35 +554,6 @@ const booksRead = [
   }
 ];
 
-
-
-const nutritionalFood = [
-  {
-    meal: "Oatmeal Bowl",
-    ingredients: ["Steel-cut oats", "Blueberries", "Almonds", "Honey", "Cinnamon"],
-    nutrition: "High in fiber, antioxidants, and healthy fats for sustained energy",
-    image: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400"
-  },
-  {
-    meal: "Grilled Salmon",
-    ingredients: ["Wild salmon", "Quinoa", "Roasted vegetables", "Lemon", "Olive oil"],
-    nutrition: "Rich in omega-3 fatty acids, complete protein, and essential minerals",
-    image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=400"
-  },
-  {
-    meal: "Chicken Rice Bowl",
-    ingredients: ["Grilled chicken breast", "Brown rice", "Broccoli", "Carrots", "Teriyaki sauce"],
-    nutrition: "Balanced macros with lean protein, complex carbs, and vitamins",
-    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400"
-  },
-  {
-    meal: "Greek Yogurt Parfait",
-    ingredients: ["Greek yogurt", "Granola", "Strawberries", "Chia seeds", "Honey"],
-    nutrition: "Probiotic-rich with high protein and calcium for gut and bone health",
-    image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400"
-  }
-];
-
 const habitatHouses = [
   {
     address: "1176 June Dr, Xenia, OH 45385",
@@ -691,7 +666,7 @@ const topPicks = [
   }
 ];
 
-const favoritePodcasts = [
+const podcastsArray = [
   {
     name: "Huberman Lab",
     host: "Andrew Huberman",
@@ -748,7 +723,7 @@ const favoritePodcasts = [
   }
 ];
 
-const favoriteSupplements = [
+const supplementsArray = [
   {
     what: "Caffeine + L-Theanine",
     how: "Boosts alertness via adenosine blockade; L-Theanine promotes calm focus by increasing alpha waves and GABA",
@@ -1574,7 +1549,7 @@ function PodcastsSection() {
         <PodcastsIcon /> Podcasts Listened
       </Typography>
       <Grid container spacing={3}>
-        {favoritePodcasts.map((podcast) => (
+        {podcastsArray.map((podcast) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={podcast.name}>
             <Card
               sx={{
@@ -1637,46 +1612,66 @@ function PodcastsTab() {
   );
 }
 
-// ==================== LIFESTYLE TAB COMPONENTS ====================
+// ==================== FOOD TAB COMPONENTS ====================
 
-function NutritionSection() {
+function FoodSection() {
+  const totalEat = eatFoods.reduce((sum, c) => sum + c.items.length, 0);
+  const totalAvoid = avoidFoods.reduce((sum, c) => sum + c.items.length, 0);
+
   return (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <RestaurantIcon /> Nutritional Food
-      </Typography>
-      <Grid container spacing={3}>
-        {nutritionalFood.map((item) => (
-          <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.meal}>
-            <Card elevation={3}
-              sx={{
-                height: '100%',
-                transition: 'transform 0.2s',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: 4
-                }
-              }}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={item.image}
-                alt={item.meal}
-              />
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {item.meal}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  <strong>Ingredients:</strong> {item.ingredients.join(', ')}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  <strong>Why eat it:</strong> {item.nutrition}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+    <Box sx={{ maxWidth: 1100, mx: "auto", px: 2, py: 4 }}>
+
+      {/* Title Row */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          mb: 3,
+          flexWrap: "wrap",
+          gap: 1,
+        }}
+      >
+        <Typography
+          variant="h5"
+          gutterBottom
+          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+        >
+          <RestaurantIcon /> Food
+        </Typography>
+
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <Chip
+            label={`${totalEat} foods to eat`}
+            size="small"
+            sx={{
+              bgcolor: "rgba(102,187,106,0.12)",
+              color: "#66bb6a",
+              border: "1px solid rgba(102,187,106,0.35)",
+              fontWeight: 600,
+            }}
+          />
+          <Chip
+            label={`${totalAvoid} foods to avoid`}
+            size="small"
+            sx={{
+              bgcolor: "rgba(239,83,80,0.12)",
+              color: "#ef5350",
+              border: "1px solid rgba(239,83,80,0.35)",
+              fontWeight: 600,
+            }}
+          />
+        </Box>
+      </Box>
+
+      {/* Two-Panel Grid */}
+      <Grid container spacing={3} alignItems="stretch">
+        <Grid size={{ xs: 12, md: 6 }}>
+          <FoodPanel title="EAT" type="eat" categories={eatFoods} />
+        </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <FoodPanel title="AVOID" type="avoid" categories={avoidFoods} />
+        </Grid>
       </Grid>
     </Box>
   );
@@ -1686,7 +1681,7 @@ function SupplementsSection() {
   const [sortBy, setSortBy] = useState<'what' | 'when'>('what');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
-  const sortedSupplements = [...favoriteSupplements].sort((a, b) => {
+  const sortedSupplements = [...supplementsArray].sort((a, b) => {
     if (sortBy === 'what') {
       return sortDirection === 'asc' ? a.what.localeCompare(b.what) : b.what.localeCompare(a.what);
     }
@@ -1699,7 +1694,7 @@ function SupplementsSection() {
   return (
     <Box sx={{ mb: 4 }}>
       <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <MedicationIcon /> Favorite Supplements
+        <MedicationIcon /> Supplements
       </Typography>
       <TableContainer component={Paper}>
         <Table>
@@ -1754,6 +1749,17 @@ function SupplementsSection() {
     </Box>
   );
 }
+
+function FoodTab() {
+  return (
+    <Box>
+      <FoodSection />
+      <SupplementsSection />
+    </Box>
+  );
+}
+
+// ==================== LIFESTYLE TAB COMPONENTS ====================
 
 function SleepSection() {
   return (
@@ -1937,15 +1943,6 @@ function HabitatSection() {
           </Grid>
         ))}
       </Grid>
-    </Box>
-  );
-}
-
-function FoodTab() {
-  return (
-    <Box>
-      <NutritionSection />
-      <SupplementsSection />
     </Box>
   );
 }
