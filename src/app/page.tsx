@@ -1243,13 +1243,6 @@ function ProductsTab() {
                     href={product.link}
                     target="_blank"
                     fullWidth
-                    sx={{
-                      backgroundColor: '#f5de62',
-                      color: '#000000',
-                      '&:hover': {
-                        backgroundColor: '#FF9900'
-                      }
-                    }}
                   >
                     View on Amazon
                   </Button>
