@@ -129,13 +129,13 @@ function HeaderSection() {
         <Typography variant="h5" align="center" color="text.secondary" sx={{ mb: 1 }}>
           Space Systems Engineer & Research Analyst
         </Typography>
-        <Typography variant="body2" align="center" sx={{ mt: 1, mb: 1 }}>
+        <Typography variant="body2" align="center" sx={{ mt: 1, mb: 1, maxWidth: 900, margin: '0 auto' }}>
           Experienced space systems engineer and research analyst with a background in
           satellite technology, software development, and strategic space operations. Skilled in
           project management, cross-functional team leadership, and technical intelligence analysis.
         </Typography>
 
-        <Grid container spacing={1} justifyContent="center" sx={{ mt: 1 }}>
+        <Grid container spacing={3} justifyContent="center" sx={{ mt: 2 }}>
           <Grid>
             <Tooltip title="Copy email to clipboard">
               <Chip
@@ -645,6 +645,7 @@ function MoviesSection() {
                   <strong>YEAR {sortBy === 'year' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
                 </Button>
               </TableCell>
+              <TableCell></TableCell>
               <TableCell>
                 <Button onClick={() => {
                   if (sortBy !== 'title') {
@@ -676,6 +677,16 @@ function MoviesSection() {
             {sortedMovies.map((movie) => (
               <TableRow key={movie.title}>
                 <TableCell>{movie.year}</TableCell>
+                <TableCell>
+                  <Box sx={{ width: '50px', height: '70px', display: 'flex', alignItems: 'center' }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={movie.image}
+                      alt={movie.title}
+                      style={{ width: '100%', height: '100%', borderRadius: '4px', objectFit: 'cover' }}
+                    />
+                  </Box>
+                </TableCell>
                 <TableCell>{movie.title}</TableCell>
                 <TableCell>{movie.genre}</TableCell>
                 <TableCell>{movie.summary}</TableCell>
