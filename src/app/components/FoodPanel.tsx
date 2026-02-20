@@ -56,7 +56,7 @@ export default function FoodPanel({ title, type, categories }: Props) {
                         <Typography
                             variant="overline"
                             sx={{
-                                color: "text.disabled",
+                                color: "#000000",
                                 fontSize: "0.65rem",
                                 letterSpacing: 1.5,
                                 display: "block",
