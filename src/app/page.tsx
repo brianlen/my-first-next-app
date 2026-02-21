@@ -605,6 +605,127 @@ function TravelTab() {
   );
 }
 
+// ==================== FOOD TAB COMPONENTS ====================
+
+function FoodSection() {
+  return (
+    <Box sx={{ maxWidth: 1100, mx: "auto", px: 2, py: 4 }}>
+
+      {/* Title Row */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          mb: 3,
+          flexWrap: "wrap",
+          gap: 1,
+        }}
+      >
+        <Typography
+          variant="h5"
+          gutterBottom
+          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+        >
+          <RestaurantIcon /> Food
+        </Typography>
+      </Box>
+
+      {/* Two-Panel Grid */}
+      <Grid container spacing={3} alignItems="stretch">
+        <Grid size={{ xs: 12, md: 6 }}>
+          <FoodPanel title="EAT" type="eat" categories={eatFoods} />
+        </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <FoodPanel title="AVOID" type="avoid" categories={avoidFoods} />
+        </Grid>
+      </Grid>
+    </Box>
+  );
+}
+
+function SupplementsSection() {
+  const [sortBy, setSortBy] = useState<'what' | 'when'>('what');
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
+
+  const sortedSupplements = [...supplementsArray].sort((a, b) => {
+    if (sortBy === 'what') {
+      return sortDirection === 'asc' ? a.what.localeCompare(b.what) : b.what.localeCompare(a.what);
+    }
+    if (sortBy === 'when') {
+      return sortDirection === 'asc' ? a.when.localeCompare(b.when) : b.when.localeCompare(a.when);
+    }
+    return 0;
+  });
+
+  return (
+    <Box sx={{ mb: 4 }}>
+      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <MedicationIcon /> Supplements
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <Button onClick={() => {
+                  if (sortBy !== 'what') {
+                    setSortBy('what');
+                    setSortDirection('asc');
+                  } else {
+                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+                  }
+                }} variant="text" size="small">
+                  <strong>WHAT {sortBy === 'what' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button onClick={() => {
+                  if (sortBy !== 'when') {
+                    setSortBy('when');
+                    setSortDirection('asc');
+                  } else {
+                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+                  }
+                }} variant="text" size="small">
+                  <strong>WHEN {sortBy === 'when' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
+                </Button>
+              </TableCell>
+              <TableCell><strong>WHY</strong></TableCell>
+              <TableCell><strong>HOW</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedSupplements.map((supplement) => (
+              <TableRow key={supplement.what}>
+                <TableCell>{supplement.what}</TableCell>
+                <TableCell sx={{ display: 'table-cell' }}>
+                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
+                  {supplement.when}
+                </TableCell>
+                <TableCell>{supplement.why}</TableCell>
+                <TableCell>{supplement.how}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
+  );
+}
+
+function FoodTab() {
+  return (
+    <Box>
+      <FoodSection />
+      <SupplementsSection />
+    </Box>
+  );
+}
+
 // ==================== MOVIES TAB COMPONENT ====================
 
 function MoviesSection() {
@@ -893,126 +1014,7 @@ function PodcastsTab() {
   );
 }
 
-// ==================== FOOD TAB COMPONENTS ====================
 
-function FoodSection() {
-  return (
-    <Box sx={{ maxWidth: 1100, mx: "auto", px: 2, py: 4 }}>
-
-      {/* Title Row */}
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          mb: 3,
-          flexWrap: "wrap",
-          gap: 1,
-        }}
-      >
-        <Typography
-          variant="h5"
-          gutterBottom
-          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
-        >
-          <RestaurantIcon /> Food
-        </Typography>
-      </Box>
-
-      {/* Two-Panel Grid */}
-      <Grid container spacing={3} alignItems="stretch">
-        <Grid size={{ xs: 12, md: 6 }}>
-          <FoodPanel title="EAT" type="eat" categories={eatFoods} />
-        </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <FoodPanel title="AVOID" type="avoid" categories={avoidFoods} />
-        </Grid>
-      </Grid>
-    </Box>
-  );
-}
-
-function SupplementsSection() {
-  const [sortBy, setSortBy] = useState<'what' | 'when'>('what');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
-
-  const sortedSupplements = [...supplementsArray].sort((a, b) => {
-    if (sortBy === 'what') {
-      return sortDirection === 'asc' ? a.what.localeCompare(b.what) : b.what.localeCompare(a.what);
-    }
-    if (sortBy === 'when') {
-      return sortDirection === 'asc' ? a.when.localeCompare(b.when) : b.when.localeCompare(a.when);
-    }
-    return 0;
-  });
-
-  return (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <MedicationIcon /> Supplements
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <Button onClick={() => {
-                  if (sortBy !== 'what') {
-                    setSortBy('what');
-                    setSortDirection('asc');
-                  } else {
-                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-                  }
-                }} variant="text" size="small">
-                  <strong>WHAT {sortBy === 'what' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
-                </Button>
-              </TableCell>
-              <TableCell>
-                <Button onClick={() => {
-                  if (sortBy !== 'when') {
-                    setSortBy('when');
-                    setSortDirection('asc');
-                  } else {
-                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-                  }
-                }} variant="text" size="small">
-                  <strong>WHEN {sortBy === 'when' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
-                </Button>
-              </TableCell>
-              <TableCell><strong>WHY</strong></TableCell>
-              <TableCell><strong>HOW</strong></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedSupplements.map((supplement) => (
-              <TableRow key={supplement.what}>
-                <TableCell>{supplement.what}</TableCell>
-                <TableCell sx={{ display: 'table-cell' }}>
-                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when}
-                </TableCell>
-                <TableCell>{supplement.why}</TableCell>
-                <TableCell>{supplement.how}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
-  );
-}
-
-function FoodTab() {
-  return (
-    <Box>
-      <FoodSection />
-      <SupplementsSection />
-    </Box>
-  );
-}
 
 // ==================== LIFESTYLE TAB COMPONENTS ====================
 
@@ -1361,10 +1363,10 @@ export default function Home() {
               >
                 <Tab label="Resume" icon={<WorkIcon />} {...a11yProps(0)} />
                 <Tab label="Travel" icon={<PublicIcon />} {...a11yProps(1)} />
-                <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(2)} />
-                <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(3)} />
-                <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(4)} />
-                <Tab label="Food" icon={<RestaurantIcon />} {...a11yProps(5)} />
+                <Tab label="Food" icon={<RestaurantIcon />} {...a11yProps(2)} />
+                <Tab label="Movies" icon={<MovieIcon />} {...a11yProps(3)} />
+                <Tab label="Books" icon={<MenuBookIcon />} {...a11yProps(4)} />
+                <Tab label="Podcasts" icon={<PodcastsIcon />} {...a11yProps(5)} />
                 <Tab label="Lifestyle" icon={<FavoriteIcon />} {...a11yProps(6)} />
                 <Tab label="Products" icon={<ShoppingCartIcon />} {...a11yProps(7)} />
               </Tabs>
@@ -1377,16 +1379,16 @@ export default function Home() {
               <TravelTab />
             </TabPanel>
             <TabPanel value={activeTab} index={2} fading={transitioning}>
-              <MoviesTab />
+              <FoodTab />
             </TabPanel>
             <TabPanel value={activeTab} index={3} fading={transitioning}>
-              <BooksTab />
+              <MoviesTab />
             </TabPanel>
             <TabPanel value={activeTab} index={4} fading={transitioning}>
-              <PodcastsTab />
+              <BooksTab />
             </TabPanel>
             <TabPanel value={activeTab} index={5} fading={transitioning}>
-              <FoodTab />
+              <PodcastsTab />
             </TabPanel>
             <TabPanel value={activeTab} index={6} fading={transitioning}>
               <LifestyleTab />
