@@ -689,7 +689,7 @@ function MoviesSection() {
                 </TableCell>
                 <TableCell>{movie.title}</TableCell>
                 <TableCell>{movie.genre}</TableCell>
-                <TableCell>{movie.summary}</TableCell>
+                <TableCell sx={{ whiteSpace: 'normal', maxWidth: { xs: '200px', md: '400px' } }}>{movie.summary}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -805,7 +805,7 @@ function BooksSection() {
                 <TableCell>{book.title}</TableCell>
                 <TableCell>{book.author}</TableCell>
                 <TableCell>{book.genre}</TableCell>
-                <TableCell>{book.summary}</TableCell>
+                <TableCell sx={{ whiteSpace: 'normal', maxWidth: { xs: '200px', md: '400px' } }}>{book.summary}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -1342,6 +1342,20 @@ export default function Home() {
                   '& .MuiTab-root:hover': {
                     backgroundColor: 'rgba(0, 0, 0, 0.04)',
                     transition: 'background-color 0.2s ease-in-out',
+                  },
+                  '& .MuiTabs-scroller': {
+                    position: 'relative',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      width: '24px',
+                      background: 'linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
+                      pointerEvents: 'none',
+                      zIndex: 1,
+                    },
                   },
                 }}
               >
