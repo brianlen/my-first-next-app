@@ -20,7 +20,7 @@ export default function ResumeChip({ emoji, name, tooltip }: Props) {
                 bgcolor: theme.palette.background.paper,
                 color: theme.palette.text.primary,
                 border: "1px solid",
-                borderColor: theme.palette.divider,
+                borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.3)' : theme.palette.divider,
                 "&:hover": {
                     bgcolor: theme.palette.action.hover,
                 },
