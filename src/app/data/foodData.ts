@@ -143,23 +143,23 @@ export const avoidFoods: FoodCategory[] = [
 export const focusEnhancers = {
     category: "Focus, Energy & Motivation Enhancers",
     items: [
-        { name: "Caffeine + L-Theanine", emoji: "☕", tooltip: "Boosts alertness without jitters for calm focus during work or study" },
-        { name: "Ginkgo Biloba", emoji: "🧠", tooltip: "Improves cerebral blood flow for better focus and memory" },
-        { name: "Korean Panax Ginseng", emoji: "🌱", tooltip: "Provides sustained cognitive energy and neuroprotection" },
+        { name: "Caffeine + L-Theanine", emoji: "☕", tooltip: "Boosts alertness without jitters for calm focus" },
+        { name: "Ginkgo Biloba", emoji: "🧠", tooltip: "Improves cerebral blood flow for focus and memory" },
+        { name: "Korean Panax Ginseng", emoji: "🌱", tooltip: "Sustains cognitive energy and neuroprotection" },
         { name: "Nitric Oxide", emoji: "💨", tooltip: "Increases blood flow for mental stamina and cognition" },
         { name: "Creatine", emoji: "💪", tooltip: "Boosts cellular energy for quicker thinking" },
-        { name: "Whey Protein", emoji: "🥛", tooltip: "Provides amino acids for neurotransmitter synthesis post-workout" },
+        { name: "Whey Protein", emoji: "🥛", tooltip: "Amino acids for neurotransmitter synthesis post-workout" },
     ],
 };
 
 export const longevitySupplements = {
     category: "Neurogenesis & Cognitive Longevity",
     items: [
-        { name: "Lion's Mane Mushroom", emoji: "🍄", tooltip: "Stimulates nerve growth factor for neuron growth and memory boost" },
-        { name: "Liposomal NAD+", emoji: "⚡", tooltip: "Enhances mitochondrial function and DNA repair for longevity" },
-        { name: "Omega-3 Fish Oil", emoji: "🐟", tooltip: "Maintains neural membranes and reduces inflammation" },
-        { name: "Vitamin D", emoji: "☀️", tooltip: "Supports neuroprotection and mood enhancement" },
-        { name: "Multivitamin", emoji: "🥦", tooltip: "Fills nutrient gaps for neurotransmitter synthesis and antioxidant support" },
+        { name: "Lion's Mane", emoji: "🍄", tooltip: "Stimulates nerve growth factor and boosts memory" },
+        { name: "Liposomal NAD+", emoji: "⚡", tooltip: "Enhances mitochondrial DNA repair for longevity" },
+        { name: "Omega-3", emoji: "🐟", tooltip: "Maintains neural membranes and reduces inflammation" },
+        { name: "Vitamin-D", emoji: "☀️", tooltip: "Supports neuroprotection and mood enhancement" },
+        { name: "Multivitamin", emoji: "🥦", tooltip: "Fills micronutrient gaps" },
     ],
 };
 
@@ -168,7 +168,7 @@ export const moodRegulators = {
     items: [
         { name: "5-HTP", emoji: "🌙", tooltip: "Boosts serotonin and melatonin for mood and sleep" },
         { name: "Ashwagandha", emoji: "🌿", tooltip: "Lowers cortisol to reduce stress and enhance memory" },
-        { name: "St. John's Wort", emoji: "🌼", tooltip: "Natural antidepressant increasing serotonin, dopamine, norepinephrine" },
+        { name: "St. John's Wort", emoji: "🌼", tooltip: "Increases serotonin, dopamine, norepinephrine" },
         { name: "Magnesium", emoji: "🧲", tooltip: "Calms neural activity for clearer thinking and rest" },
     ],
 };
