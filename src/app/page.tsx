@@ -60,8 +60,9 @@ import WorkIcon from '@mui/icons-material/Work';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 // Import custom components
-import ThemeToggle from './components/ThemeToggle';
 import FoodPanel from './components/FoodPanel';
+import ResumeChip from './components/ResumeChip';
+import ThemeToggle from './components/ThemeToggle';
 
 // Import custom data
 import { workExperience, education, technicalSkills, aiSkills, keySkills, languages } from './data/resumeData';
@@ -69,7 +70,7 @@ import { placesLived, citiesVisited, countriesVisited, marathonsArray } from './
 import { moviesWatched } from './data/moviesData';
 import { booksRead } from './data/booksData';
 import { podcastsArray } from './data/podcastsData';
-import { eatFoods, avoidFoods, supplementsArray } from './data/foodData';
+import { eatFoods, avoidFoods, focusEnhancers, longevitySupplements, moodRegulators } from './data/foodData';
 import { breathingTechniques, habitatHouses } from './data/lifestyleData';
 import { productsArray } from './data/productsData';
 
@@ -262,7 +263,7 @@ function SkillsSection() {
       </Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
         {technicalSkills.map((skill) => (
-          <Chip key={skill} label={skill} color="primary" />
+          <ResumeChip key={skill.name} emoji={skill.emoji} name={skill.name} tooltip={skill.tooltip} />
         ))}
       </Box>
 
@@ -271,7 +272,7 @@ function SkillsSection() {
       </Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
         {aiSkills.map((skill) => (
-          <Chip key={skill} label={skill} color="secondary" />
+          <ResumeChip key={skill.name} emoji={skill.emoji} name={skill.name} tooltip={skill.tooltip} />
         ))}
       </Box>
 
@@ -280,7 +281,7 @@ function SkillsSection() {
       </Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
         {keySkills.map((skill) => (
-          <Chip key={skill} label={skill} variant="outlined" />
+          <ResumeChip key={skill.name} emoji={skill.emoji} name={skill.name} tooltip={skill.tooltip} />
         ))}
       </Box>
     </Box>
@@ -609,8 +610,7 @@ function TravelTab() {
 
 function FoodSection() {
   return (
-    <Box sx={{ maxWidth: 1100, mx: "auto", px: 2, py: 4 }}>
-
+    <>
       {/* Title Row */}
       <Box
         sx={{
@@ -640,79 +640,15 @@ function FoodSection() {
           <FoodPanel title="AVOID" type="avoid" categories={avoidFoods} />
         </Grid>
       </Grid>
-    </Box>
+    </>
   );
 }
 
 function SupplementsSection() {
-  const [sortBy, setSortBy] = useState<'what' | 'when'>('what');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
-
-  const sortedSupplements = [...supplementsArray].sort((a, b) => {
-    if (sortBy === 'what') {
-      return sortDirection === 'asc' ? a.what.localeCompare(b.what) : b.what.localeCompare(a.what);
-    }
-    if (sortBy === 'when') {
-      return sortDirection === 'asc' ? a.when.localeCompare(b.when) : b.when.localeCompare(a.when);
-    }
-    return 0;
-  });
-
+  const supplementsCategories = [focusEnhancers, longevitySupplements, moodRegulators];
   return (
-    <Box sx={{ mb: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <MedicationIcon /> Supplements
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <Button onClick={() => {
-                  if (sortBy !== 'what') {
-                    setSortBy('what');
-                    setSortDirection('asc');
-                  } else {
-                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-                  }
-                }} variant="text" size="small">
-                  <strong>WHAT {sortBy === 'what' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
-                </Button>
-              </TableCell>
-              <TableCell>
-                <Button onClick={() => {
-                  if (sortBy !== 'when') {
-                    setSortBy('when');
-                    setSortDirection('asc');
-                  } else {
-                    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
-                  }
-                }} variant="text" size="small">
-                  <strong>WHEN {sortBy === 'when' ? (sortDirection === 'desc' ? '↓' : '↑') : ''}</strong>
-                </Button>
-              </TableCell>
-              <TableCell><strong>WHY</strong></TableCell>
-              <TableCell><strong>HOW</strong></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedSupplements.map((supplement) => (
-              <TableRow key={supplement.what}>
-                <TableCell>{supplement.what}</TableCell>
-                <TableCell sx={{ display: 'table-cell' }}>
-                  {supplement.when.toLowerCase().includes('morning') && <LightModeIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('evening') && <HotelIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('workout') && <FitnessCenterIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when.toLowerCase().includes('meal') && <FastfoodIcon sx={{ mr: 1, fontSize: 18, verticalAlign: 'middle' }} />}
-                  {supplement.when}
-                </TableCell>
-                <TableCell>{supplement.why}</TableCell>
-                <TableCell>{supplement.how}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+    <Box sx={{ mt: 4 }}>
+      <FoodPanel title="Supplements" categories={supplementsCategories} />
     </Box>
   );
 }
