@@ -1,15 +1,17 @@
 ﻿import { Box, Typography, Paper, Divider } from "@mui/material";
 import FoodChip from "./FoodChip";
+import ResumeChip from "./ResumeChip";
 import type { FoodCategory } from "../data/foodData";
 
 interface Props {
     title: string;
-    type: "eat" | "avoid";
+    type?: "eat" | "avoid";
     categories: FoodCategory[];
 }
 
 export default function FoodPanel({ title, type, categories }: Props) {
     const isEat = type === "eat";
+    const isNeutral = !type;
 
     return (
         <Paper
@@ -18,7 +20,7 @@ export default function FoodPanel({ title, type, categories }: Props) {
             sx={{
                 borderRadius: 3,
                 overflow: "hidden",
-                borderColor: isEat ? "rgba(102,187,106,0.4)" : "rgba(239,83,80,0.4)",
+                borderColor: isEat ? "rgba(102,187,106,0.4)" : isNeutral ? "rgba(0,0,0,0.4)" : "rgba(239,83,80,0.4)",
                 height: "100%",
             }}
         >
@@ -28,7 +30,7 @@ export default function FoodPanel({ title, type, categories }: Props) {
                     position: "sticky",
                     top: 0,
                     zIndex: 1,
-                    bgcolor: isEat ? "rgba(102,187,106,0.15)" : "rgba(239,83,80,0.15)",
+                    bgcolor: isEat ? "rgba(102,187,106,0.15)" : isNeutral ? "rgba(255,255,255,0.15)" : "rgba(239,83,80,0.15)",
                     backdropFilter: "blur(8px)",
                     px: 3,
                     py: 1.5,
@@ -36,14 +38,14 @@ export default function FoodPanel({ title, type, categories }: Props) {
                     alignItems: "center",
                     gap: 1.5,
                     borderBottom: "1px solid",
-                    borderColor: isEat ? "rgba(102,187,106,0.25)" : "rgba(239,83,80,0.25)",
+                    borderColor: isEat ? "rgba(102,187,106,0.25)" : isNeutral ? "rgba(0,0,0,0.25)" : "rgba(239,83,80,0.25)",
                 }}
             >
-                <Typography fontSize="1.4rem">{isEat ? "✅" : "🚫"}</Typography>
+                <Typography fontSize="1.4rem">{isEat ? "✅" : isNeutral ? "💊" : "🚫"}</Typography>
                 <Typography
                     variant="h6"
                     fontWeight={700}
-                    sx={{ color: isEat ? "#66bb6a" : "#ef5350", letterSpacing: 1 }}
+                    sx={{ color: isEat ? "#66bb6a" : isNeutral ? "#000000" : "#ef5350", letterSpacing: 1 }}
                 >
                     {title}
                 </Typography>
@@ -67,13 +69,22 @@ export default function FoodPanel({ title, type, categories }: Props) {
                         </Typography>
                         <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                             {cat.items.map((item) => (
-                                <FoodChip
-                                    key={item.name}
-                                    emoji={item.emoji}
-                                    name={item.name}
-                                    reason={item.reason}
-                                    type={type}
-                                />
+                                type ? (
+                                    <FoodChip
+                                        key={item.name}
+                                        emoji={item.emoji}
+                                        name={item.name}
+                                        tooltip={item.tooltip}
+                                        type={type}
+                                    />
+                                ) : (
+                                    <ResumeChip
+                                        key={item.name}
+                                        emoji={item.emoji}
+                                        name={item.name}
+                                        tooltip={item.tooltip}
+                                    />
+                                )
                             ))}
                         </Box>
                         {i < categories.length - 1 && (
