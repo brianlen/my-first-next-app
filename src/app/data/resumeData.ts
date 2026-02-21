@@ -43,46 +43,46 @@ export const education = [
 ];
 
 export const technicalSkills = [
-    "C++",
-    "MATLAB",
-    "Python",
-    "Julia",
-    "Javascript",
-    "Typescript",
-    "Node.js",
-    "React.js",
-    "Next.js",
-    "MUI",
-    "Git",
-    "Docker",
-    "PostgreSQL",
-    "PyTorch",
-    "Scikit-learn"
+    { emoji: "🖥️", name: "C++", tooltip: "System programming" },
+    { emoji: "📊", name: "MATLAB", tooltip: "Numerical computing" },
+    { emoji: "🐍", name: "Python", tooltip: "Versatile scripting" },
+    { emoji: "📈", name: "Julia", tooltip: "High-performance computing" },
+    { emoji: "💛", name: "Javascript", tooltip: "Web development" },
+    { emoji: "🔷", name: "Typescript", tooltip: "Typed JS" },
+    { emoji: "🟢", name: "Node.js", tooltip: "Server-side JS" },
+    { emoji: "⚛️", name: "React.js", tooltip: "UI library" },
+    { emoji: "📄", name: "Next.js", tooltip: "React framework" },
+    { emoji: "🎨", name: "MUI", tooltip: "Material UI" },
+    { emoji: "📚", name: "Git", tooltip: "Version control" },
+    { emoji: "🐳", name: "Docker", tooltip: "Containerization" },
+    { emoji: "🐘", name: "PostgreSQL", tooltip: "Relational database" },
+    { emoji: "🔥", name: "PyTorch", tooltip: "Deep learning" },
+    { emoji: "🤖", name: "Scikit-learn", tooltip: "Machine learning" }
 ];
 
 export const aiSkills = [
-    "Perplexity",
-    "Anthropic Claude",
-    "OpenAI ChatGPT",
-    "xAI Grok",
-    "Microsoft Copilot",
-    "Google Gemini",
-    "Windsurf",
-    "Palantir Foundry + AIP",
-    "Ontology SDK"
+    { emoji: "🤔", name: "Perplexity", tooltip: "AI search" },
+    { emoji: "🧠", name: "Anthropic Claude", tooltip: "Conversational AI" },
+    { emoji: "💬", name: "OpenAI ChatGPT", tooltip: "Generative chat" },
+    { emoji: "🚀", name: "xAI Grok", tooltip: "Helpful AI" },
+    { emoji: "✈️", name: "Microsoft Copilot", tooltip: "Productivity assistant" },
+    { emoji: "💎", name: "Google Gemini", tooltip: "Multimodal AI" },
+    { emoji: "🌊", name: "Windsurf", tooltip: "Coding assistant" },
+    { emoji: "🏭", name: "Palantir Foundry + AIP", tooltip: "Data platform" },
+    { emoji: "📋", name: "Ontology SDK", tooltip: "Ontology tools" }
 ];
 
 export const keySkills = [
-    "Space Systems Engineering",
-    "Intelligence Analysis",
-    "Project Management",
-    "Software Development",
-    "Risk Assessment",
-    "Satellite Operations",
-    "Technical Intelligence",
-    "Cybersecurity",
-    "Team Leadership",
-    "INTJ-T 5w4 sp/sx"
+    { emoji: "🚀", name: "Space Systems Engineering", tooltip: "Orbital design" },
+    { emoji: "🔍", name: "Intelligence Analysis", tooltip: "Data insights" },
+    { emoji: "📋", name: "Project Management", tooltip: "Team coordination" },
+    { emoji: "💻", name: "Software Development", tooltip: "Code creation" },
+    { emoji: "⚠️", name: "Risk Assessment", tooltip: "Threat evaluation" },
+    { emoji: "🛰️", name: "Satellite Operations", tooltip: "Orbital control" },
+    { emoji: "🕵️", name: "Technical Intelligence", tooltip: "Info gathering" },
+    { emoji: "🔒", name: "Cybersecurity", tooltip: "Data protection" },
+    { emoji: "👥", name: "Team Leadership", tooltip: "Group guidance" },
+    { emoji: "🧠", name: "INTJ-T 5w4 sp/sx", tooltip: "Personality type" }
 ];
 
 export const languages = [
