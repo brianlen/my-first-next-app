@@ -3,11 +3,11 @@
 interface Props {
     emoji: string;
     name: string;
-    reason?: string;
+    tooltip?: string;
     type: "eat" | "avoid";
 }
 
-export default function FoodChip({ emoji, name, reason, type }: Props) {
+export default function FoodChip({ emoji, name, tooltip, type }: Props) {
     const chip = (
         <Chip
             label={`${emoji} ${name}`}
@@ -29,8 +29,8 @@ export default function FoodChip({ emoji, name, reason, type }: Props) {
     );
 
     // Show reason on hover for avoid foods
-    return reason ? (
-        <Tooltip title={reason} placement="top" arrow>
+    return tooltip ? (
+        <Tooltip title={tooltip} placement="top" arrow>
             {chip}
         </Tooltip>
     ) : (
