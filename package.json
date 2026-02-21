@@ -1,6 +1,6 @@
 {
-  "homepage": "https://brianlen.github.io/my-first-next-app",
-  "name": "my-first-next-app",
+  "homepage": "https://brianlen.github.io/resume-app",
+  "name": "resume-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
