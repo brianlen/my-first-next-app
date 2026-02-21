@@ -4,7 +4,7 @@ import React from 'react';
 import { IconButton, Tooltip } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useThemeContext } from '../ThemeProvider';
+import { useThemeContext } from './ThemeProvider';
 
 export default function ThemeToggle() {
     const { mode, toggleTheme } = useThemeContext();
