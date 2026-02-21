@@ -18,7 +18,7 @@ export default function FoodPanel({ title, type, categories }: Props) {
             elevation={0}
             variant="outlined"
             sx={{
-                borderRadius: 3,
+                borderRadius: 0,
                 overflow: "hidden",
                 borderColor: isEat ? "rgba(102,187,106,0.4)" : isNeutral ? "rgba(0,0,0,0.4)" : "rgba(239,83,80,0.4)",
                 height: "100%",
