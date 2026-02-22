@@ -30,7 +30,7 @@ export default function FoodPanel({ title, type, categories }: Props) {
                     position: "sticky",
                     top: 0,
                     zIndex: 1,
-                    bgcolor: isEat ? "rgba(102,187,106,0.15)" : isNeutral ? "rgba(255,255,255,0.15)" : "rgba(239,83,80,0.15)",
+                    bgcolor: isEat ? "rgba(102,187,106,0.15)" : isNeutral ? "rgba(255, 255, 255, 0.15)" : "rgba(239,83,80,0.15)",
                     backdropFilter: "blur(8px)",
                     px: 3,
                     py: 1.5,
@@ -45,7 +45,10 @@ export default function FoodPanel({ title, type, categories }: Props) {
                 <Typography
                     variant="h6"
                     fontWeight={700}
-                    sx={{ color: isEat ? "#66bb6a" : isNeutral ? "#000000" : "#ef5350", letterSpacing: 1 }}
+                    sx={(theme) => ({
+                        color: isEat ? "#66bb6a" : isNeutral ? theme.palette.text.primary : "#ef5350",
+                        letterSpacing: 1
+                    })}
                 >
                     {title}
                 </Typography>
@@ -58,7 +61,7 @@ export default function FoodPanel({ title, type, categories }: Props) {
                         <Typography
                             variant="overline"
                             sx={{
-                                color: "#000000",
+                                color: (theme) => theme.palette.text.primary,
                                 fontSize: "0.65rem",
                                 letterSpacing: 1.5,
                                 display: "block",
